@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - [house_price_train.csv](house_price_train.csv) &nbsp; | &nbsp; [house_price_test.csv](house_price_test.csv) &nbsp; | &nbsp; [data_description.txt](data_description.txt)
 
-[Project 2](project2.html), This project is optional.  If you turn it in, it must be submitted by 11:59pm on Sunday, Dec. 11 (see details below).  
+[Project 2](project2.html), This project is optional.  If you turn it in, it must be submitted by 11:59pm on Tuesday, Dec. 6 (see details below).  
 
 - [jtrain_observational.dta](jtrain_observational.dta) &nbsp; | &nbsp; [jtrain_observational_description.txt](jtrain_observational_description.txt) &nbsp; | &nbsp; [jtrain_experimental.dta](jtrain_experimental.dta) &nbsp; | &nbsp; [jtrain_experimental_description.txt](jtrain_experimental_description.txt) 
 

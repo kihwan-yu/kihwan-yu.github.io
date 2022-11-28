@@ -298,8 +298,8 @@ pre code {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -307,16 +307,9 @@ pre code {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -392,7 +385,7 @@ file</a>]]</p>
 <li><a href="house_price_train.csv">house_price_train.csv</a>   |   <a href="house_price_test.csv">house_price_test.csv</a>   |   <a href="data_description.txt">data_description.txt</a></li>
 </ul>
 <p><a href="project2.html">Project 2</a>, This project is optional. If
-you turn it in, it must be submitted by 11:59pm on Sunday, Dec. 11 (see
+you turn it in, it must be submitted by 11:59pm on Tuesday, Dec. 6 (see
 details below).</p>
 <ul>
 <li><p><a href="jtrain_observational.dta">jtrain_observational.dta</a>  
