@@ -65,6 +65,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * Additional office hours: Friday 1:00-2:00pm, Monday 9:30-10:30am (in person, Amos B408).
 
+**Additional Materials for Final Exam**
+
+* [Study Guide](final_study_guide.html)
+
+* [Additional Practice Questions](final_extra_questions.html), [[[solutions](final_extra_questions_sol.html)]]
+
+* Additional office hours: Tuesday 2:30-4:00pm (in person, Amos B408).  If this time does not work, please email me to set up an alternative time.
+
 # Data
 
 This list only includes data that needs to be downloaded from the course website.  Other data is listed in the Course Notes along with steps to access the data and a link to a description of the data.
