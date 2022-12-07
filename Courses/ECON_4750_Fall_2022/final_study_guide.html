@@ -298,8 +298,8 @@ pre code {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -307,9 +307,16 @@ pre code {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
+  content: "";
   border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -393,7 +400,7 @@ prediction/causal inference parts of the class.</p></li>
 you will have the full 3 hours to take the exam.</p></li>
 <li><p>Finally, I have provided some extra questions <a href="final_extra_questions.html">here</a>. My recommendation is to
 study some before you try to answer these questions. The solutions are
-provided <a href="final_extra_questions.html">here</a>.</p></li>
+provided <a href="final_extra_questions_sol.html">here</a>.</p></li>
 </ul>
 
 

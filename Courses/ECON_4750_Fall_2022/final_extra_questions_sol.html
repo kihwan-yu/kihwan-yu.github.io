@@ -298,8 +298,8 @@ pre code {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -307,9 +307,16 @@ pre code {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
+  content: "";
   border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -439,9 +446,9 @@ clicks?</p>
 <div class="answer">
 <strong>Answer:</strong> The table indicates that the model from part
 (b) is likely to predict better than the model from part (a). This holds
-since adjust <span class="math inline">\(R^2\)</span> is higher for the
-model from part (b) and because AIC and BIC are both lower for the model
-from part (b).
+since adjusted <span class="math inline">\(R^2\)</span> is higher for
+the model from part (b) and because AIC and BIC are both lower for the
+model from part (b).
 </div></li>
 <li><p>An alternative approach to choosing between these two models is
 to use J-fold cross-validation. Explain how you could use J-fold cross
@@ -514,7 +521,7 @@ example, if states that lower the minimum drinking age tend to be more
 rural than other states (and, additionally, more rural states tend to
 have fewer traffic fatalities), then that would be a violation of the
 condition in part (a).</p>
-There are a nummber of variables that one might need to include for the
+There are a number of variables that one might need to include for the
 condition in part (b) to hold. Some that come to mind are: (i) the
 population density of a state, (ii) the highway speed limit in the
 state, (iii) the age distribution of the population of the state; other
@@ -523,113 +530,163 @@ some states may just tend to have more aggressive drivers than other
 states.
 </div></li>
 </ol></li>
+<li><p>Extra Questions 6.8. Suppose you are willing to believe versions
+of unconfoundedness, a linear model for untreated potential outcomes,
+and treatment effect homogeneity so that you could write <span class="math display">\[\begin{align*}
+  Y_i = \beta_0 + \alpha D_i + \beta_1 X_i + \beta_2 W_i + U_i \qquad
+(1)
+\end{align*}\]</span> with <span class="math inline">\(\mathbb{E}[U|D,X,W] = 0\)</span> so that you were
+willing to interpret <span class="math inline">\(\alpha\)</span> in this
+regression as the causal effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span>. However, suppose that <span class="math inline">\(W\)</span> is not observed so that you cannot
+operationalize the above regression.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Since you do not observe <span class="math inline">\(W\)</span>, you
+are considering just running a regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(D\)</span> and <span class="math inline">\(X\)</span> and interpreting the estimated
+coefficient on <span class="math inline">\(D\)</span> as the causal
+effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span>. Does this seem like a good idea?</li>
 </ol>
-<!--
-3. Suppose you are interested in the causal effect of $D$ on $Y$.  If you could estimate the following model, you would be willing to interpret $\alpha$ as the causal effect of $D$ on $Y$
-\begin{align*}
-    Y_i = \beta_0 + \alpha D_i + \beta_1 W_i + U_i
-\end{align*}
-where $\E[U|D,W]=0$.  However, you do not observe $W_i$.  
+<div class="answer">
+<strong>Answer:</strong> No, if you just ignore <span class="math inline">\(W_i\)</span>, you will get omitted variable bias.
+The coefficient on <span class="math inline">\(D\)</span> in this
+regression will not (generally) be equal to the causal effect <span class="math inline">\(\alpha\)</span>.
+</div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>In part (a), we can write a version of the model that you are
+thinking about estimating as <span class="math display">\[\begin{align*}
+   Y_i = \delta_0 + \delta_1 D_i + \delta_2 X_i + \epsilon_i \qquad (2)
+\end{align*}\]</span> Suppose that <span class="math inline">\(\mathbb{E}[\epsilon | D, X] = 0\)</span> and
+suppose also that <span class="math display">\[\begin{equation}
+W_i = \gamma_0 + \gamma_1 D_i + \gamma_2 X_i + V_i \qquad (3)
+  \end{equation}\]</span> with <span class="math inline">\(\mathbb{E}[V|D,X]=0\)</span>. Provide an
+expression for <span class="math inline">\(\delta_1\)</span> in terms of
+<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\gamma\)</span>’s and <span class="math inline">\(\beta\)</span>’s. Explain what this expression
+means.</li>
+</ol>
+<div class="answer">
+<p><strong>Answer:</strong> First, from Equation (2) and the condition
+that <span class="math inline">\(\mathbb{E}[\epsilon | D, X] =
+0\)</span>, we know that</p>
+<p><span class="math display">\[
+\mathbb{E}[Y|D,X] = \delta_0 + \delta_1 D + \delta_2 X
+\]</span> so that <span class="math inline">\(\delta_1\)</span> is just
+the coefficient on <span class="math inline">\(D\)</span> from a
+regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(D\)</span> and <span class="math inline">\(X\)</span> (and ignoring <span class="math inline">\(W\)</span>).</p>
+<p>Now, let’s derive an alternative expression for <span class="math inline">\(\mathbb{E}[Y|D,X]\)</span> using Equation (1) as
+the starting point. In particular, by just plugging in <span class="math inline">\(Y\)</span> from Equation (1) into <span class="math inline">\(\mathbb{E}[Y|D,X]\)</span>, notice that:</p>
+<p><span class="math display">\[
+\begin{aligned}
+   \mathbb{E}[Y|D, X] &amp;= \mathbb{E}[\beta_0 + \alpha D + \beta_1 X +
+\beta_2 W + U | D, X] \\
+   &amp;= \beta_0 + \alpha D + \beta_1 X + \beta_2 \mathbb{E}[W|D,X] +
+\mathbb{E}[U|D,X] \\
+   &amp;= \beta_0 + \alpha D + \beta_1 X + \beta_2 (\gamma_0 + \gamma_1
+D + \gamma_2 X) \\
+   &amp;= \underbrace{(\beta_0 + \beta_2 \gamma_0)}_{\delta_0} +
+\underbrace{(\alpha + \beta_2 \gamma_1)}_{\delta_1} D +
+\underbrace{(\beta_1 + \beta_2 \gamma_2)}_{\delta_2} X
+\end{aligned}
+\]</span></p>
+<p>where the first equality holds by plugging in <span class="math inline">\(Y\)</span> from Equation (1), the second equality
+holds by properties of expectations (and since we are conditioning on
+<span class="math inline">\(D\)</span> and <span class="math inline">\(X\)</span>), the third equality holds from
+Equation (3) and because <span class="math inline">\(\mathbb{E}[U|D,X]=0\)</span>, the fourth equality
+just rearranges terms. This is an alternative expression for a
+regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(D\)</span> and <span class="math inline">\(X\)</span> in terms of the <span class="math inline">\(\beta\)</span>’s and <span class="math inline">\(\gamma\)</span>’s. And, most importantly, it
+implies that</p>
+<p><span class="math display">\[
+\delta_1 = \alpha + \beta_2 \gamma_1
+\]</span></p>
+In words, this means that the coefficient on <span class="math inline">\(D\)</span> in a regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(D\)</span> and <span class="math inline">\(X\)</span> (that ignores <span class="math inline">\(W\)</span>) will not be equal to <span class="math inline">\(\alpha\)</span> unless <span class="math inline">\(\beta_2=0\)</span> (this would occur if the
+partial effect of <span class="math inline">\(W\)</span> on <span class="math inline">\(Y\)</span> is equal to 0) or <span class="math inline">\(\gamma_1=0\)</span> (this would occur if <span class="math inline">\(D\)</span> and <span class="math inline">\(W\)</span> are uncorrelated after controlling for
+<span class="math inline">\(X\)</span>).
+</div></li>
+</ol>
+<p><br><br></p>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Consider the following regression, where
+<code>child_fincome</code> is child’s family income,
+<code>parent_fincome</code> is parents’ family income, <code>sex</code>
+is binary variable indicating whether a child is male,
+<code>yearborn</code> is the year that the child was born in, and
+<code>education</code> is the years of education of the child.</p>
+<pre class="r"><code>load(&quot;../Detailed Course Notes/data/intergenerational_mobility.RData&quot;)
 
-    a) Since you do not observe $W_i$, you are considering just running a regression of $Y_i$ on $D_i$.  Will this strategy work?  Explain.
-    
-    <div class="answer">
-    **Answer:** This strategy will not generally work.  In particular, there will be omitted variable bias.  That is, the coefficient on $D_i$ in a regression of $Y_i$ on $D_i$ will not be equal to $\alpha$, and therefore we should not interpret that coefficient as an estimate of the causal effect of $D$ on $Y$.
-    </div>
+reg2 &lt;- lm(log(child_fincome) ~ log(parent_fincome) + sex + yearborn + education,
+           data=intergenerational_mobility)
+summary(reg2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = log(child_fincome) ~ log(parent_fincome) + sex + 
+##     yearborn + education, data = intergenerational_mobility)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -3.11404 -0.32489  0.04514  0.36940  2.70867 
+## 
+## Coefficients:
+##                       Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)         21.3037430  1.9719502  10.803  &lt; 2e-16 ***
+## log(parent_fincome)  0.5964735  0.0198679  30.022  &lt; 2e-16 ***
+## sex                  0.0318506  0.0194484   1.638 0.101572    
+## yearborn            -0.0085957  0.0009896  -8.686  &lt; 2e-16 ***
+## education            0.0012618  0.0003437   3.672 0.000244 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.5834 on 3625 degrees of freedom
+## Multiple R-squared:  0.2221, Adjusted R-squared:  0.2212 
+## F-statistic: 258.8 on 4 and 3625 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>How do you interpret the coefficient on
+<code>log(parent_fincome)</code> in this model?</p>
+<div class="answer">
+<strong>Answer:</strong> If parents’ income increases by 1%, then, on
+average, child’s income increases by 0.596% holding sex, year born, and
+education constant.
+</div></li>
+</ol>
+<p><br><br></p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Consider the following regression using country-level data, where
+<span class="math inline">\(GDP\)</span> is a country’s GDP, <span class="math inline">\(Inflation\)</span> is the country’s current
+inflation rate, <span class="math inline">\(Europe\)</span> is a binary
+variable indicating whether the country is located in Europe, and where
+<span class="math inline">\(Democracy\)</span> is a binary variable
+indicating whether a country has democratic institutions.</p>
+<p><span class="math display">\[GDP = \beta_0 + \beta_1 Inflation +
+\beta_2 Inflation \cdot Europe + \beta_3 Inflation^2 + \beta_4 Democracy
++ U\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>What is the partial effect of Inflation in this model?</p>
+<div class="answer">
+<p><strong>Answer:</strong></p>
+<p><span class="math display">\[PE_{Inflation} = \beta_1 + \beta2 Europe
++ 2 \beta_3 Inflation\]</span></p>
+</div></li>
+<li><p>What is the average partial effect of Inflation in this
+model?</p>
+<div class="answer">
+<p><strong>Answer:</strong></p>
+<p><span class="math display">\[APE_{Inflation} = \beta_1 + \beta_2
+\mathbb{E}[Europe] + 2 \beta_3 \mathbb{E}[Inflation]\]</span></p>
+</div></li>
+<li><p>Given relevant data, how would you estimate the average partial
+effect of Inflation?</p>
+<div class="answer">
 
-    b) Now suppose that you actually have access to panel data.  Further, suppose that $W$ does not vary over time, but that $Y$ and $D$ do vary over time.  Therefore, you are considering the model
-    \begin{align*}
-        Y_{it} = \beta_0 + \alpha D_{it} + \beta_1 W_i + U_{it}
-    \end{align*}
-    Explain how you can use this setup to estimate the causal effect $\alpha$ (be specific about exactly what regression you would run here).
-    
-    <div class="answer">
-    **Answer:**  Notice that subtracting $Y_{it-1}$ from $Y_{it}$ implies that
-    
-    $$
-    \begin{aligned}
-    Y_{it} &= \beta_0 + \alpha D_{it} + \beta_1 W_i + U_{it} \\
-    - Y_{it-1} &= \beta_0 + \alpha D_{it-1} + \beta_1 W_i + U_{it-1} \\[10pt]
-    \implies \Delta Y_{it} &= \alpha \Delta D_{it} + \Delta U_{it}
-    \end{aligned}
-    $$
-    
-    The key thing here is that taking this difference over time gets rid of the term involving $W_i$ which was the reason for the omitted variable bias in part (a).  The above equation suggests running a regression of the change in $Y$ over time on the change in $D$ over time and interpreting the coefficient on $\Delta D_{it}$ as the causal effect.
-    </div>
-
-    c) Now, suppose that actually the effect of $W$ varies over time, so that the model from part (b) becomes
-    \begin{align*}
-        Y_{it} = \beta_0 + \alpha D_{it} + \beta_{1t}W_i + U_{it}
-    \end{align*}
-    (note: what's different here is that $\beta_{1t}$ changes across time periods).  Will your strategy from part (b) continue to work in this case?  Explain.
-    
-    <div class="answer">
-    **Answer:**  If we follow the same strategy as in part (b) where we subtracted $Y_{it-1}$ from $Y_{it}$, notice that
-    
-    $$
-    \begin{aligned}
-    Y_{it} &= \beta_0 + \alpha D_{it} + \beta_{1,t} W_i + U_{it} \\
-    - Y_{it-1} &= \beta_0 + \alpha D_{it-1} + \beta_{1,t-1} W_i + U_{it-1} \\[10pt]
-    \implies \Delta Y_{it} &= \alpha \Delta D_{it} + \Delta \beta_{1,t} W_i + \Delta U_{it}
-    \end{aligned}
-    $$
-    where $\Delta \beta_{1,t} = \beta_{1,t} - \beta_{1,t-1}$.  Unlike part (b), this expression still involves $W_i$.  This means that we still cannot run this regression (because we do not observe $W_i$).  This further implies that running a regression of $\Delta Y_{it}$ on $\Delta D_{it}$ will contain omitted variable bias.
-    
-    BTW, as a side-comment, you can interpret $\beta_{1,t}$ varying over time as meaning that the effect of $W_i$ changes over time.  A leading example here would be if $W_i$ were "ability" and you thought that the return to ability might be changing over time.
-    </div>
-
-4. Extra Questions 6.8.  Suppose you are willing to believe versions of unconfoundedness, a linear model for untreated potential outcomes, and treatment effect homogeneity so that you could write
-\begin{align*}
-  Y_i = \beta_0 + \alpha D_i + \beta_1 X_i + \beta_2 W_i + U_i \qquad (1)
-\end{align*}
-with $\E[U|D,X,W] = 0$ so that you were willing to interpret $\alpha$ in this regression as the causal effect of $D$ on $Y$.  However, suppose that $W$ is not observed so that you cannot operationalize the above regression.  
-
-    a) Since you do not observe $W$, you are considering just running a regression of $Y$ on $D$ and $X$ and interpreting the estimated coefficient on $D$ as the causal effect of $D$ on $Y$.  Does this seem like a good idea?
-    
-    <div class="answer">
-    **Answer:**  No, if you just ignore $W_i$, you will get omitted variable bias.  The coefficient on $D$ in this regression will not (generally) be equal to the causal effect $\alpha$.
-    </div>
-    
-    b) In part (a), we can write a version of the model that you are thinking about estimating as
-    \begin{align*}
-      Y_i = \delta_0 + \delta_1 D_i + \delta_2 X_i + \epsilon_i \qquad (2)
-    \end{align*}
-    Suppose that $\E[\epsilon | D, X] = 0$ and suppose also that
-     \begin{equation} 
-       W_i = \gamma_0 + \gamma_1 D_i + \gamma_2 X_i + V_i \qquad (3)
-     \end{equation}
-     with $\E[V|D,X]=0$.  Provide an expression for $\delta_1$ in terms of $\alpha$, $\gamma$'s and $\beta$'s.  Explain what this expression means.
-
-    <div class="answer">
-    **Answer:**  First, from Equation (2) and the condition that $\E[\epsilon | D, X] = 0$, we know that
-    
-    $$
-    \E[Y|D,X] = \delta_0 + \delta_1 D + \delta_2 X
-    $$
-    so that $\delta_1$ is just the coefficient on $D$ from a regression of $Y$ on $D$ and $X$ (and ignoring $W$).  
-    
-    Now, let's derive an alternative expression for $\E[Y|D,X]$ using Equation (1) as the starting point.  In particular, by just plugging in $Y$ from Equation (1) into $\E[Y|D,X]$,  notice that:
-    
-    $$
-    \begin{aligned}
-      \E[Y|D, X] &= \E[\beta_0 + \alpha D + \beta_1 X + \beta_2 W + U | D, X] \\
-      &= \beta_0 + \alpha D + \beta_1 X + \beta_2 \E[W|D,X] + \E[U|D,X] \\
-      &= \beta_0 + \alpha D + \beta_1 X + \beta_2 (\gamma_0 + \gamma_1 D + \gamma_2 X) \\
-      &= \underbrace{(\beta_0 + \beta_2 \gamma_0)}_{\delta_0} + \underbrace{(\alpha + \beta_2 \gamma_1)}_{\delta_1} D + \underbrace{(\beta_1 + \beta_2 \gamma_2)}_{\delta_2} X
-    \end{aligned}
-    $$
-    
-    where the first equality holds by plugging in $Y$ from Equation (1), the second equality holds by properties of expectations (and since we are conditioning on $D$ and $X$), the third equality holds from Equation (3) and because $\E[U|D,X]=0$, the fourth equality just rearranges terms.  This is an alternative expression for a regression of $Y$ on $D$ and $X$ in terms of the $\beta$'s and $\gamma$'s.  And, most importantly, it implies that 
-    
-    $$
-    \delta_1 = \alpha + \beta_2 \gamma_1
-    $$
-    
-    In words, this means that the coefficient on $D$ in a regression of $Y$ on $D$ and $X$ (that ignores $W$) will not be equal to $\alpha$ unless $\beta_2=0$ (this would occur if the partial effect of $W$ on $Y$ is equal to 0) or $\gamma_1=0$ (this would occur if $D$ and $W$ are uncorrelated after controlling for $X$).
-    </div>
-    
--->
-<p><br><br><br></p>
+<p><strong>Answer:</strong></p>
+<p><span class="math display">\[\widehat{APE}_{Inflation} =
+\hat{\beta}_1 + \hat{\beta}_2 \overline{Europe} + 2 \hat{\beta}_3
+\overline{Inflation}\]</span></p>
+<p>where <span class="math inline">\(\hat{\beta}_1\)</span>, <span class="math inline">\(\hat{\beta}_2\)</span>, and <span class="math inline">\(\hat{\beta_3}\)</span> come from estimating the
+regression in the problem; <span class="math inline">\(\overline{Europe}\)</span> is the sample average
+of <span class="math inline">\(Europe\)</span> in the data (in other
+words, it is just equal to the fraction of countries that are located in
+Europe); and <span class="math inline">\(\overline{Inflation}\)</span>
+is the average inflation in the data.</p></li>
+</ol>
+</div></li>
+</ol>
+<p><br><br></p>
 
 
 

@@ -298,8 +298,8 @@ pre code {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -307,9 +307,16 @@ pre code {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
+  content: "";
   border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -425,6 +432,9 @@ clicks?</p></li>
 to use J-fold cross-validation. Explain how you could use J-fold cross
 validation in this problem.</p></li>
 </ol></li>
+</ol>
+<p><br><br></p>
+<ol start="2" style="list-style-type: decimal">
 <li><p>Questions about causal inference.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>What does the condition <span class="math inline">\((Y(1), Y(0))
@@ -440,32 +450,68 @@ would you need to include in the condition in part (b) to hold?
 Explain.</p></li>
 </ol></li>
 </ol>
-<!--
+<p><br><br></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Extra Questions 6.8</li>
+</ol>
+<p><br><br></p>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Consider the following regression, where
+<code>child_fincome</code> is child’s family income,
+<code>parent_fincome</code> is parents’ family income, <code>sex</code>
+is binary variable indicating whether a child is male,
+<code>yearborn</code> is the year that the child was born in, and
+<code>education</code> is the years of education of the child.</p>
+<pre class="r"><code>load(&quot;../Detailed Course Notes/data/intergenerational_mobility.RData&quot;)
 
-3. Suppose you are interested in the causal effect of $D$ on $Y$.  If you could estimate the following model, you would be willing to interpret $\alpha$ as the causal effect of $D$ on $Y$
-\begin{align*}
-    Y_i = \beta_0 + \alpha D_i + \beta_1 W_i + U_i
-\end{align*}
-where $\E[U|D,W]=0$.  However, you do not observe $W_i$.  
-
-    a) Since you do not observe $W_i$, you are considering just running a regression of $Y_i$ on $D_i$.  Will this strategy work?  Explain.
-
-    b) Now suppose that you actually have access to panel data.  Further, suppose that $W$ does not vary over time, but that $Y$ and $D$ do vary over time.  Therefore, you are considering the model
-    \begin{align*}
-        Y_{it} = \beta_0 + \alpha D_{it} + \beta_1 W_i + U_{it}
-    \end{align*}
-    Explain how you can use this setup to estimate the causal effect $\alpha$ (be specific about exactly what regression you would run here).
-
-    c) Now, suppose that actually the effect of $W$ varies over time, so that the model from part (b) becomes
-    \begin{align*}
-        Y_{it} = \beta_0 + \alpha D_{it} + \beta_{1t}W_i + U_{it}
-    \end{align*}
-    (note: what's different here is that $\beta_{1t}$ changes across time periods).  Will your strategy from part (b) continue to work in this case?  Explain.
-
-4. Extra Questions 6.8
-
--->
-<p><br><br><br></p>
+reg2 &lt;- lm(log(child_fincome) ~ log(parent_fincome) + sex + yearborn + education,
+           data=intergenerational_mobility)
+summary(reg2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = log(child_fincome) ~ log(parent_fincome) + sex + 
+##     yearborn + education, data = intergenerational_mobility)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -3.11404 -0.32489  0.04514  0.36940  2.70867 
+## 
+## Coefficients:
+##                       Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)         21.3037430  1.9719502  10.803  &lt; 2e-16 ***
+## log(parent_fincome)  0.5964735  0.0198679  30.022  &lt; 2e-16 ***
+## sex                  0.0318506  0.0194484   1.638 0.101572    
+## yearborn            -0.0085957  0.0009896  -8.686  &lt; 2e-16 ***
+## education            0.0012618  0.0003437   3.672 0.000244 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.5834 on 3625 degrees of freedom
+## Multiple R-squared:  0.2221, Adjusted R-squared:  0.2212 
+## F-statistic: 258.8 on 4 and 3625 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>How do you interpret the coefficient on
+<code>log(parent_fincome)</code> in this model?</p></li>
+</ol>
+<p><br><br></p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Consider the following regression using country-level data, where
+<span class="math inline">\(GDP\)</span> is a country’s GDP, <span class="math inline">\(Inflation\)</span> is the country’s current
+inflation rate, <span class="math inline">\(Europe\)</span> is a binary
+variable indicating whether the country is located in Europe, and where
+<span class="math inline">\(Democracy\)</span> is a binary variable
+indicating whether a country has democratic institutions.</p>
+<p><span class="math display">\[GDP = \beta_0 + \beta_1 Inflation +
+\beta_2 Inflation \cdot Europe + \beta_3 Inflation^2 + \beta_4 Democracy
++ U\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>What is the partial effect of Inflation in this model?</p></li>
+<li><p>What is the average partial effect of Inflation in this
+model?</p></li>
+<li><p>Given relevant data, how would you estimate the average partial
+effect of Inflation?</p></li>
+</ol></li>
+</ol>
+<p><br><br></p>
 
 
 
