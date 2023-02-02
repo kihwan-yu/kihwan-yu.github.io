@@ -11,7 +11,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Homeworks
 
-[HW 1](hw1.html), due Tuesday, Jan. 31 
+[HW 1](hw1.html), due Tuesday, Jan. 31, [[[solutions](hw1_sol.pdf)]]
+
+[HW 2](hw2.html), due Thursday, Feb. 9,
+
+- [cps09mar.dta](cps09mar.dta)
 
 # Course Material
 
