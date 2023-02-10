@@ -17,6 +17,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - [cps09mar.dta](cps09mar.dta)
 
+# Additional Material for Midterm 1
+
+* Midterm 1 covers the course lecture notes 1-4 / the first 4 chapters of Hansen.
+
+* [Additional Practice Questions for Midterm 1](additional_practice1.html), these do not need to be turned in, [[[solutions](additional_practice1_sol.pdf)]]
+
 # Course Material
 
 We will cover the following topics:
