@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [HW 1](hw1.html), due Tuesday, Jan. 31, [[[solutions](hw1_sol.pdf)]]
 
-[HW 2](hw2.html), due Thursday, Feb. 9,
+[HW 2](hw2.html), due Thursday, Feb. 9, [[[solutions](hw2_sol.pdf)]]
 
 - [cps09mar.dta](cps09mar.dta)
 
@@ -27,7 +27,7 @@ We will cover the following topics:
 
 1. [Linear Regression](01_linear_regression.html)
 
-2. [Inference/Hypothesis Testing](02_hypothesis_testing.html)
+<!--2. [Inference/Hypothesis Testing](02_hypothesis_testing.html)-->
 
 3. [Resampling Methods](03_resampling_methods.html)
 
