@@ -11,7 +11,7 @@
 
 
 
-<title>ECON 8080 Course Material</title>
+<title>Homework 3</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,68 +354,124 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">ECON 8080 Course Material</h1>
+<h1 class="title toc-ignore">Homework 3</h1>
 
 </div>
 
 
+<p><strong>Due:</strong> At the start of class on Thursday, March 2.
+Please turn in a hard copy.</p>
+<p><strong>Textbook Questions</strong> 7.7, 7.14, 7.17, 7.28 (only parts
+a and e)</p>
+<p><strong>Extra Question 1</strong></p>
+<p>Monte Carlo simulations are a very useful way to study properties of
+different estimators. Basically, the idea is to use simulated data
+(where we know what the true model is) and check how well a particular
+estimator performs.</p>
+<p>For this problem, we’ll use Monte Carlo simulations to assess the
+bias and sampling variance of <span class="math inline">\(\hat{\beta}\)</span>. Because we have never done
+this before, I am going to provide some code that is useful for this
+problem (though you will have to fill in some details).</p>
+<p>For a particular simulation, do the following for <span class="math inline">\(i=1,...,n\)</span> (for now, set <span class="math inline">\(n=100\)</span>, but we will try different values
+of <span class="math inline">\(n\)</span> later)</p>
 <ul>
-<li><a href="syllabus.pdf">Syllabus</a></li>
+<li>draw <span class="math inline">\(X\)</span> from an exponential
+distribution with rate parameter equal 1 (you can use <code>rexp</code>
+function for this)</li>
+<li>draw <span class="math inline">\(e\)</span> from a mixture of two
+normals, with mixture probabilities both equal to 1/2, means equal to -2
+and 2, and standard deviations both equal to 1 (you can use
+<code>mixtools::rnormmix</code> for this)</li>
+<li>Set <span class="math inline">\(Y=\beta_0 + \beta_1 X + e\)</span>
+where <span class="math inline">\(\beta_0=0\)</span> and <span class="math inline">\(\beta_1=1\)</span> and <span class="math inline">\(X\)</span> and <span class="math inline">\(e\)</span> are the draws from the first two
+steps.</li>
 </ul>
-<div id="homeworks" class="section level1">
-<h1>Homeworks</h1>
-<p><a href="hw1.html">HW 1</a>, due Tuesday, Jan. 31, [[<a href="hw1_sol.pdf">solutions</a>]]</p>
-<p><a href="hw2.html">HW 2</a>, due Thursday, Feb. 9, [[<a href="hw2_sol.pdf">solutions</a>]]</p>
-<ul>
-<li><a href="cps09mar.dta">cps09mar.dta</a></li>
-</ul>
-<p><a href="hw3.html">HW 3</a>, due Thursday, Mar. 2</p>
-</div>
-<div id="additional-material-for-midterm-1" class="section level1">
-<h1>Additional Material for Midterm 1</h1>
-<ul>
-<li><p>Midterm 1 covers the course lecture notes 1-4 / the first 4
-chapters of Hansen.</p></li>
-<li><p><a href="additional_practice1.html">Additional Practice Questions
-for Midterm 1</a>, these do not need to be turned in, [[<a href="additional_practice1_sol.pdf">solutions</a>]]</p></li>
-</ul>
-</div>
-<div id="course-material" class="section level1">
-<h1>Course Material</h1>
-<p>We will cover the following topics:</p>
-<p>(<span style="color: red; font-weight: bold;">Note:</span> Some of
-the material will be updated/expanded as we move through the semester.
-Some of the topics at the end of the semester are tentative.)</p>
-<ol start="0" style="list-style-type: decimal">
-<li><p><a href="introduction_to_R.html">Introduction to R</a></p></li>
-<li><p><a href="01_linear_regression.html">Linear
-Regression</a></p></li>
+<p>The above steps give you a data set with observations of <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>. Using this data, run a regression of
+<span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span> (make sure to include an intercept) and
+recover estimates <span class="math inline">\(\hat{\beta}_0\)</span> and
+<span class="math inline">\(\hat{\beta}_1\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Do the above steps 1000 times and calculate (i) the average
+values of <span class="math inline">\(\hat{\beta}_1\)</span> across
+simulations, and (ii) the variance of <span class="math inline">\(\hat{\beta}_1\)</span> across simulations. What do
+these results suggest to you? In particular, are they consistent with
+the theory that we have derived in class? Explain.</p></li>
+<li><p>Try the same calculations with <span class="math inline">\(n=2\)</span>, <span class="math inline">\(n=10\)</span>, <span class="math inline">\(n=50\)</span>, and <span class="math inline">\(n=500\)</span>. What do you notice?</p></li>
 </ol>
-<!--2. [Inference/Hypothesis Testing](02_hypothesis_testing.html)-->
-<ol start="3" style="list-style-type: decimal">
-<li><p><a href="03_resampling_methods.html">Resampling
-Methods</a></p></li>
-<li><p><a href="04_nonlinear_models.html">Introduction to Nonlinear
-Models</a></p></li>
-<li><p><a href="05_alternative_causal_inference.html">Alternative
-Approaches to Causal Inference</a></p></li>
-<li><p><a href="06_panel_data_causal_inference.html">Panel Data
-Approaches to Causal Inference</a></p></li>
-<li><p>If we have time, an introduction to [Generalized Method of
-Moments]</p></li>
-<li><p>If we have time, an introduction to [Quantile
-Regression]</p></li>
-<li><p>If we have time, an introduction to [Nonparametric
-Regression]</p></li>
-</ol>
-</div>
-<div id="slides" class="section level1">
-<h1>Slides</h1>
+<pre class="r"><code># function to run a single simulation
+sim &lt;- function() {
+  # draw X1
+  X1 &lt;- rexp(n)
+  
+  # draw the error term
+  e &lt;- mixtools::rnormmix(n, lambda=c(.5,.5), mu=c(-2,2), sigma=c(1,1))
+  
+  ## TODO: construct Y
+  
+
+  ## TODO: use X1 and Y to estimate bet0 and bet1
+  
+
+  # TODO: return estimated value of bet1
+  
+}
+
+# function to run many simulations
+# @param n_sims is the number of simulations to run
+run_mc &lt;- function(n_sims=1000) {
+  
+  # run n_sims simulations and store in a vector
+  mc_res &lt;- sapply(1:n_sims, function(s) {
+    sim()
+  })
+  
+  # print the mean of b1
+  cat(&quot;mean b1  : &quot;, mean(mc_res), &quot;\n&quot;)
+  
+  # print the variance of b1
+  cat(&quot;var b1   : &quot;, var(mc_res), &quot;\n&quot;)
+}</code></pre>
+<pre class="r"><code># run the simulations
+# set values of parameters and number of observations
+b0 &lt;- 0
+b1 &lt;- 1
+n &lt;- 100
+
+run_mc()</code></pre>
+<p><strong>Extra Question 2</strong></p>
+<p>For this question, we will conduct more Monte Carlo simulations,
+building on the previous question. This time we will use Monte Carlo
+simulations to assess how well our asymptotic inference arguments
+work.</p>
+<p>As in the previous question, for a particular simulation, do the
+following for <span class="math inline">\(i=1,...,n\)</span> (for now,
+set <span class="math inline">\(n=100\)</span>, but we will try
+different values of <span class="math inline">\(n\)</span> later)</p>
 <ul>
-<li>First Week: <a href="introduction_slides.html">Introduction to ECON
-8080</a></li>
+<li>draw <span class="math inline">\(X\)</span> from an exponential
+distribution with rate parameter equal 1 (you can use <code>rexp</code>
+function for this)</li>
+<li>draw <span class="math inline">\(e\)</span> from a mixture of two
+normals, with mixture probabilities both equal to 1/2, means equal to -2
+and 2, and standard deviations both equal to 1 (you can use
+<code>mixtools::rnormmix</code> for this)</li>
+<li>Set <span class="math inline">\(Y=\beta_0 + \beta_1 X + e\)</span>
+where <span class="math inline">\(\beta_0=0\)</span> and <span class="math inline">\(\beta_1=1\)</span> and <span class="math inline">\(X\)</span> and <span class="math inline">\(e\)</span> are the draws from the first two
+steps.</li>
 </ul>
-</div>
+<p>The above steps give you a data set with observations of <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>. Construct a t-statistic for <span class="math inline">\(\mathbb{H}_0 : \beta_1 = 1\)</span>. For each
+Monte Carlo simulation, determine whether or not you reject <span class="math inline">\(\mathbb{H}_0\)</span> at a 5% significance
+level.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Given our theoretical results from class, can you tell what
+fraction of the time you should reject <span class="math inline">\(\mathbb{H}_0\)</span> in this setup?</p></li>
+<li><p>Do the above steps 1000 times and calculate the fraction of times
+that you reject <span class="math inline">\(\mathbb{H}_0\)</span>. Are
+the results in line with the theory from class? Explain.</p></li>
+<li><p>Try the same calculations with <span class="math inline">\(n=10\)</span>, <span class="math inline">\(n=50\)</span>, <span class="math inline">\(n=500\)</span>, and <span class="math inline">\(n=1000\)</span>. What do you notice?</p></li>
+<li><p>Redo parts (a)-(c), but for <span class="math inline">\(\mathbb{H}_0 : \beta_1=0\)</span>. What patterns
+do you notice?</p></li>
+</ol>
 
 
 
