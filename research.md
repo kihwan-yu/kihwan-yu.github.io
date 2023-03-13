@@ -8,9 +8,9 @@ permalink: /research/
 
 1. [Evaluating Policies Early in a Pandemic: Bounding Policy Effects with Nonrandomly Missing Data](https://arxiv.org/abs/2005.09605) [[Supplementary Appendix](/files/CL-Covid-Bounds/Callaway_Li_Covid_Bounds_2022_Supplementary_Appendix.pdf)] (with Tong Li, Forthcoming at *Review of Economics and Statistics*)
 
-2. Difference-in-Differences for Policy Evaluation [[Draft Version](files/Callaway-Chapter-2022/main.pdf)] (Forthcoming at *Handbook of Labor, Human Resources and Population Economics*)
+2. [Difference-in-Differences for Policy Evaluation](https://link.springer.com/referenceworkentry/10.1007/978-3-319-57365-6_352-1) [[Draft Version](files/Callaway-Chapter-2022/main.pdf)] [[complete code](https://github.com/bcallaway11/did_chapter) (In: Zimmermann, K.F. (eds) Handbook of Labor, Human Resources and Population Economics., pp. 1--61, 2023)
 
-3. [Treatment Effects in Interactive Fixed Effects Models with a Small Number of Time Periods](https://doi.org/10.1016/j.jeconom.2022.02.001) [[arXiv](https://arxiv.org/abs/2006.15780)] [[Supplementary Appendix](files/IFE/Callaway_Karami_2022_appendix.pdf)] (with Sonia Karami, Forthcoming at *Journal of Econometrics*)
+3. [Treatment Effects in Interactive Fixed Effects Models with a Small Number of Time Periods](https://doi.org/10.1016/j.jeconom.2022.02.001) [[arXiv](https://arxiv.org/abs/2006.15780)] [[Supplementary Appendix](files/IFE/Callaway_Karami_2022_appendix.pdf)] (with Sonia Karami, *Journal of Econometrics*, Vol. 233, No. 1, pp. 184--208, 2023.)
 
     * Code: [`ife` R package, on GitHub](https://github.com/bcallaway11/ife)
 
