@@ -4,6 +4,8 @@ title: Posts
 permalink: /posts/
 ---
 
+* [Short summary](/posts/did-chapter) of my DID chapter in the *Handbook of Labor, Human Resources and Population Economics*.
+
 * [Five minute summary](/posts/fms-did-time-varying-covariates) of [Difference in differences with time-varying covariates](https://arxiv.org/abs/2202.02903)
 
 * [Base periods in event studies](https://bcallaway11.github.io/posts/event-study-universal-v-varying-base-period) Comparing varying and universal base periods in event studies
