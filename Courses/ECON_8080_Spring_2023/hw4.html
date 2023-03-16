@@ -11,7 +11,7 @@
 
 
 
-<title>ECON 8080 Course Material</title>
+<title>Homework 4</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,69 +354,72 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">ECON 8080 Course Material</h1>
+<h1 class="title toc-ignore">Homework 4</h1>
 
 </div>
 
 
+<p><strong>Due:</strong> At the start of class on Thursday, March 23.
+Please turn in a hard copy.</p>
+<ol style="list-style-type: decimal">
+<li><p>For this problem, we will be thinking about properties of the
+linear probability model: <span class="math inline">\(\textrm{P}(Y=1|X)
+= \textrm{E}[Y|X] = X&#39;\beta\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>In the linear probability model, calculate the conditional
+variance of the CEF error <span class="math inline">\(\textrm{E}[e^2|X]\)</span>.</p></li>
+<li><p>Now suppose that you are interested in estimating <span class="math inline">\(\beta\)</span>. We know that the usual OLS
+estimator of <span class="math inline">\(\beta\)</span> is <span class="math inline">\(\hat{\beta} = \left(\frac{1}{n} \sum_{i=1}^n X_i
+X_i&#39;\right)^{-1} \frac{1}{n} \sum_{i=1}^n X_i Y_i\)</span>. Instead,
+suppose that you estimate <span class="math inline">\(\beta\)</span>
+using maximum likelihood; you can call this estimator <span class="math inline">\(\tilde{\beta}\)</span>. Derive an expression for
+<span class="math inline">\(\tilde{\beta}\)</span>.</p></li>
+<li><p>Is <span class="math inline">\(\tilde{\beta}\)</span> from part
+(b) different from <span class="math inline">\(\hat{\beta}\)</span>? How
+is this related to the answer from part (a)?</p></li>
+</ol></li>
+<li><p>Hansen 25.15, for this question, you need to code the probit
+estimator yourself (compute both estimates of the parameters and their
+standard errors); i.e., you cannot use built-in R functions such as
+<code>glm</code>. Hint: you can use R’s optimization routines such as
+<code>optim</code>. In addition to what is asked in 25.15,</p>
 <ul>
-<li><a href="syllabus.pdf">Syllabus</a></li>
-</ul>
-<div id="homeworks" class="section level1">
-<h1>Homeworks</h1>
-<p><a href="hw1.html">HW 1</a>, due Tuesday, Jan. 31, [[<a href="hw1_sol.pdf">solutions</a>]]</p>
-<p><a href="hw2.html">HW 2</a>, due Thursday, Feb. 9, [[<a href="hw2_sol.pdf">solutions</a>]]</p>
-<ul>
-<li><a href="cps09mar.dta">cps09mar.dta</a></li>
-</ul>
-<p><a href="hw3.html">HW 3</a>, due Thursday, Mar. 2, [[<a href="hw3_sol.pdf">solutions</a>]]</p>
-<p><a href="hw4.html">HW 4</a>, due Thursday, Mar. 23</p>
-</div>
-<div id="additional-material-for-midterm-1" class="section level1">
-<h1>Additional Material for Midterm 1</h1>
-<ul>
-<li><p>Midterm 1 covers the course lecture notes 1-4 / the first 4
-chapters of Hansen.</p></li>
-<li><p><a href="additional_practice1.html">Additional Practice Questions
-for Midterm 1</a>, these do not need to be turned in, [[<a href="additional_practice1_sol.pdf">solutions</a>]]</p></li>
-</ul>
-</div>
-<div id="course-material" class="section level1">
-<h1>Course Material</h1>
-<p>We will cover the following topics:</p>
-<p>(<span style="color: red; font-weight: bold;">Note:</span> Some of
-the material will be updated/expanded as we move through the semester.
-Some of the topics at the end of the semester are tentative.)</p>
-<ol start="0" style="list-style-type: decimal">
-<li><p><a href="introduction_to_R.html">Introduction to R</a></p></li>
-<li><p><a href="01_linear_regression.html">Linear
-Regression</a></p></li>
+<li><p>compare the estimates that you get to those coming from the
+<code>glm</code> function</p></li>
+<li><p>report average partial effects (which the book refers to as
+average marginal effects) for each regressor</p></li>
+<li><p>compute the standard error of each average partial effect (again,
+use your own code to compute these). For computing standard errors of
+the partial effects, you have two options:</p>
+<p><strong>Option 1:</strong> Analytical Standard Errors, hint:
+Obtaining the standard errors for this part is challenging. One thing to
+notice is that <span class="math display">\[\begin{align*}
+\sqrt{n}(\widehat{APE} - APE) &amp;= \sqrt{n}\left( \frac{1}{n}
+\sum_{i=1}^n \phi(X_i&#39;\hat{\beta}) \hat{\beta} -
+\textrm{E}[\phi(X&#39;\beta) \beta] \right) \\
+&amp;= \sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n \phi(X_i&#39;\hat{\beta})
+\hat{\beta} - \frac{1}{n} \sum_{i=1}^n \phi(X_i&#39;\hat{\beta}) \beta
+\right) \\
+&amp; + \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n
+\phi(X_i&#39;\hat{\beta}) \beta - \frac{1}{n} \sum_{i=1}^n
+\phi(X_i&#39;\beta) \beta\right) \\
+&amp; + \sqrt{n} \left( \frac{1}{n} \sum_{i=1}^n \phi(X_i&#39;\beta)
+\beta - \textrm{E}[\phi(X&#39;\beta) \beta] \right)
+\end{align*}\]</span></p>
+<p>which holds just by adding and subtracting some terms, and, just to
+be clear, the notation above is for the entire vector of average partial
+effects for all regressors. Figuring out the asymptotic distributions
+for the first and last lines is not too hard, but the middle expression
+requires using some kind of mean value theorem type of argument (as we
+have done before in the context of the delta method).</p>
+<p><strong>Option 2:</strong> This is also a place where it might make
+sense to use the bootstrap. You can use the bootstrap to compute
+standard errors for the average partial effect.</p>
+<p>You can compute standard errors for the average partial effects using
+either Option 1 or Option 2 for full credit (or both if you are feeling
+ambitious)</p></li>
+</ul></li>
 </ol>
-<!--2. [Inference/Hypothesis Testing](02_hypothesis_testing.html)-->
-<ol start="2" style="list-style-type: decimal">
-<li><p><a href="02_resampling_methods.html">Resampling
-Methods</a></p></li>
-<li><p><a href="03_nonlinear_models.html">Introduction to Nonlinear
-Models</a></p></li>
-<li><p><a href="04_alternative_causal_inference.html">Alternative
-Approaches to Causal Inference</a></p></li>
-<li><p><a href="05_panel_data_causal_inference.html">Panel Data
-Approaches to Causal Inference</a></p></li>
-<li><p>If we have time, an introduction to [Generalized Method of
-Moments]</p></li>
-<li><p>If we have time, an introduction to [Quantile
-Regression]</p></li>
-<li><p>If we have time, an introduction to [Nonparametric
-Regression]</p></li>
-</ol>
-</div>
-<div id="slides" class="section level1">
-<h1>Slides</h1>
-<ul>
-<li>First Week: <a href="introduction_slides.html">Introduction to ECON
-8080</a></li>
-</ul>
-</div>
 
 
 
