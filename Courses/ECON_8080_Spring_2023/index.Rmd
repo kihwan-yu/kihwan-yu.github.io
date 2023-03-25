@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * Midterm 2 covers the course lecture notes from Lecture Notes 5 (Asymptotic Theory for Least Squares), Resampling Methods, Nonlinear Models, and the first part of Alternative Approaches to Causal Inference (up to the section called "Alternative Approaches" on p.9)
 
-* [Additional Practice Questions for Midterm 2](additional_practice2.html), these questions do not need to be turned in, I'll post solutions soon.
+* [Additional Practice Questions for Midterm 2](additional_practice2.html), these questions do not need to be turned in, [[[solutions](additional_practice2_sol.pdf)]]
 
 # Course Material
 
