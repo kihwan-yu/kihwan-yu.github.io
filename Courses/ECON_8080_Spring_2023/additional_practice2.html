@@ -11,7 +11,7 @@
 
 
 
-<title>ECON 8080 Course Material</title>
+<title>Additional Practice Questions</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,81 +354,50 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">ECON 8080 Course Material</h1>
+<h1 class="title toc-ignore">Additional Practice Questions</h1>
 
 </div>
 
 
-<ul>
-<li><a href="syllabus.pdf">Syllabus</a></li>
-</ul>
-<div id="homeworks" class="section level1">
-<h1>Homeworks</h1>
-<p><a href="hw1.html">HW 1</a>, due Tuesday, Jan. 31, [[<a href="hw1_sol.pdf">solutions</a>]]</p>
-<p><a href="hw2.html">HW 2</a>, due Thursday, Feb. 9, [[<a href="hw2_sol.pdf">solutions</a>]]</p>
-<ul>
-<li><a href="cps09mar.dta">cps09mar.dta</a></li>
-</ul>
-<p><a href="hw3.html">HW 3</a>, due Thursday, Mar. 2, [[<a href="hw3_sol.pdf">solutions</a>]]</p>
-<p><a href="hw4.html">HW 4</a>, due Thursday, Mar. 23, [[<a href="hw4_sol.pdf">solutions</a>]]</p>
-</div>
-<div id="additional-material-for-midterm-1" class="section level1">
-<h1>Additional Material for Midterm 1</h1>
-<ul>
-<li><p>Midterm 1 covers the course lecture notes 1-4 / the first 4
-chapters of Hansen.</p></li>
-<li><p><a href="additional_practice1.html">Additional Practice Questions
-for Midterm 1</a>, these do not need to be turned in, [[<a href="additional_practice1_sol.pdf">solutions</a>]]</p></li>
-</ul>
-</div>
-<div id="additional-material-for-midterm-2" class="section level1">
-<h1>Additional Material for Midterm 2</h1>
-<ul>
-<li><p>Midterm 2 covers the course lecture notes from Lecture Notes 5
-(Asymptotic Theory for Least Squares), Resampling Methods, Nonlinear
-Models, and the first part of Alternative Approaches to Causal Inference
-(up to the section called “Alternative Approaches” on p.9)</p></li>
-<li><p><a href="additional_practice2.html">Additional Practice Questions
-for Midterm 2</a>, these questions do not need to be turned in, I’ll
-post solutions soon.</p></li>
-</ul>
-</div>
-<div id="course-material" class="section level1">
-<h1>Course Material</h1>
-<p>We will cover the following topics:</p>
-<p>(<span style="color: red; font-weight: bold;">Note:</span> Some of
-the material will be updated/expanded as we move through the semester.
-Some of the topics at the end of the semester are tentative.)</p>
-<ol start="0" style="list-style-type: decimal">
-<li><p><a href="introduction_to_R.html">Introduction to R</a></p></li>
-<li><p><a href="01_linear_regression.html">Linear
-Regression</a></p></li>
+<p><strong>You do not need to turn these in. These are just some
+additional practice questions for the midterm. You shouldn’t treat this
+as a practice midterm though as these questions are only for the new
+material since the previous question.</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>For this problem, suppose that unconfoundedness holds.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Define <span class="math inline">\(CATE(X) = \mathbb{E}[Y(1) -
+Y(0) | X]\)</span>. Is <span class="math inline">\(CATE(X)\)</span>
+identified in this setting? If yes, provide an expression for
+it.</p></li>
+<li><p>Define <span class="math inline">\(CATT(X) = \mathbb{E}[Y(1) -
+Y(0) | X, D=1]\)</span>. Is <span class="math inline">\(CATT(X)\)</span>
+identified in this setting? If yes, provide an expression for
+it.</p></li>
+<li><p>Provide an explanation/comparison for the results you get in
+parts (a) and (b).</p></li>
+</ol></li>
+<li><p>In class, we mentioned that, for some function <span class="math inline">\(g(X)\)</span>, it held that</p>
+<p><span class="math display">\[\begin{align*}
+   \mathbb{E}[g(X)|D=1] = \mathbb{E}\left[ \frac{p(X)(1-p)}{(1-p(X))p}
+g(X) \big| D=0 \right]
+\end{align*}\]</span></p>
+<p>Provide a mathematical explanation for why this holds. For
+simplicity, you can suppose that <span class="math inline">\(X\)</span>
+is continuously distributed in your explanation.</p></li>
+<li><p>Consider the regression <span class="math inline">\(Y_i = \alpha
+D_i + X_i&#39;\beta_0 + e_i\)</span>. Suppose that unconfoundedness and
+overlap both hold. Show that <span class="math display">\[\begin{align*}
+  \alpha = \mathbb{E}[w(D,X) CATE(X)]
+\end{align*}\]</span> where <span class="math inline">\(CATE(X)\)</span>
+is defined above and <span class="math inline">\(w(D,X) = \displaystyle
+\frac{D(1-\textrm{L}(D|X))}{\mathbb{E}\big[(D-\textrm{L}(D|X))^2\big]}\)</span>
+if either (i) <span class="math inline">\(p(X) =
+\textrm{L}(D|X)\)</span> or (ii) <span class="math inline">\(\mathbb{E}[Y|X,D=0] = \textrm{L}_0(Y|X)\)</span>.
+To show this result, you can use as a starting part either of the two
+decompositions for <span class="math inline">\(\alpha\)</span> that we
+discussed in class.</p></li>
 </ol>
-<!--2. [Inference/Hypothesis Testing](02_hypothesis_testing.html)-->
-<ol start="2" style="list-style-type: decimal">
-<li><p><a href="02_resampling_methods.html">Resampling
-Methods</a></p></li>
-<li><p><a href="03_nonlinear_models.html">Introduction to Nonlinear
-Models</a></p></li>
-<li><p><a href="04_alternative_causal_inference.html">Alternative
-Approaches to Causal Inference</a></p></li>
-<li><p><a href="05_panel_data_causal_inference.html">Panel Data
-Approaches to Causal Inference</a></p></li>
-<li><p>If we have time, an introduction to [Generalized Method of
-Moments]</p></li>
-<li><p>If we have time, an introduction to [Quantile
-Regression]</p></li>
-<li><p>If we have time, an introduction to [Nonparametric
-Regression]</p></li>
-</ol>
-</div>
-<div id="slides" class="section level1">
-<h1>Slides</h1>
-<ul>
-<li>First Week: <a href="introduction_slides.html">Introduction to ECON
-8080</a></li>
-</ul>
-</div>
 
 
 

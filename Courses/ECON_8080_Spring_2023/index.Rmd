@@ -19,13 +19,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [HW 3](hw3.html), due Thursday, Mar. 2, [[[solutions](hw3_sol.pdf)]]
 
-[HW 4](hw4.html), due Thursday, Mar. 23
+[HW 4](hw4.html), due Thursday, Mar. 23, [[[solutions](hw4_sol.pdf)]]
 
 # Additional Material for Midterm 1
 
 * Midterm 1 covers the course lecture notes 1-4 / the first 4 chapters of Hansen.
 
 * [Additional Practice Questions for Midterm 1](additional_practice1.html), these do not need to be turned in, [[[solutions](additional_practice1_sol.pdf)]]
+
+# Additional Material for Midterm 2
+
+* Midterm 2 covers the course lecture notes from Lecture Notes 5 (Asymptotic Theory for Least Squares), Resampling Methods, Nonlinear Models, and the first part of Alternative Approaches to Causal Inference (up to the section called "Alternative Approaches" on p.9)
+
+* [Additional Practice Questions for Midterm 2](additional_practice2.html), these questions do not need to be turned in, I'll post solutions soon.
 
 # Course Material
 
