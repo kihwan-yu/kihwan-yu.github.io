@@ -11,7 +11,7 @@
 
 
 
-<title>ECON 8080 Course Material</title>
+<title>Homework 5</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,81 +354,72 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">ECON 8080 Course Material</h1>
+<h1 class="title toc-ignore">Homework 5</h1>
 
 </div>
 
 
+<p><strong>Due:</strong> At the start of class on Tuesday, April 18.
+Please turn in a hard copy.</p>
+<p><strong>Textbook Questions:</strong> Hansen 17.2</p>
+<p><strong>Additional Question 1:</strong> For this problem, we will be
+interested in computing an estimate of the <span class="math inline">\(ATT\)</span> of a job training program. You can <a href="https://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/jtrain_observational.dta">download
+the data here</a> and <a href="https://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/jtrain_observational_description.txt">download
+a description here</a>. For this problem, the outcome of interest is
+<code>re78</code>, the treatment is <code>train</code>, and suppose that
+unconfoundedness holds after conditioning on <code>age</code>,
+<code>educ</code>, <code>black</code>, <code>hisp</code>,
+<code>married</code>, <code>re75</code>, and <code>unem75</code>.</p>
 <ul>
-<li><a href="syllabus.pdf">Syllabus</a></li>
+<li><p>Given our discussion in class, we know that if we believe
+unconfoundedness and that untreated potential outcomes are linear in
+covariates, then we have that</p>
+<p><span class="math display">\[\begin{align*}
+    ATT = \textrm{E}[Y|D=1] - \textrm{E}[X&#39;|D=1]\beta
+  \end{align*}\]</span></p>
+<p>where <span class="math inline">\(\beta\)</span> can be estimated
+from the regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span> using untreated observations. Estimate
+<span class="math inline">\(ATT\)</span> based on the above expression
+for it and report your result.</p></li>
+<li><p>Show that <span class="math inline">\(\sqrt{n}(\widehat{ATT} -
+ATT) \xrightarrow{d} N(0,V)\)</span> and provide an expression for <span class="math inline">\(V\)</span>. Based on this result, provide standard
+errors for your estimate of <span class="math inline">\(ATT\)</span>.</p></li>
+<li><p>Use the bootstrap to compute standard errors for your estimate of
+<span class="math inline">\(ATT\)</span>. How do these compare to the
+standard errors that you reported previously?</p></li>
+<li><p>Run a regression of <span class="math inline">\(Y\)</span> on
+<span class="math inline">\(D\)</span> and <span class="math inline">\(X\)</span> (where <span class="math inline">\(X\)</span> includes the same additional variables
+as above). Compare the coefficient on <span class="math inline">\(D\)</span> to the estimate of <span class="math inline">\(ATT\)</span>. How similar are they? What about
+their standard errors? Do you have any comment on these
+results?</p></li>
 </ul>
-<div id="homeworks" class="section level1">
-<h1>Homeworks</h1>
-<p><a href="hw1.html">HW 1</a>, due Tuesday, Jan. 31, [[<a href="hw1_sol.pdf">solutions</a>]]</p>
-<p><a href="hw2.html">HW 2</a>, due Thursday, Feb. 9, [[<a href="hw2_sol.pdf">solutions</a>]]</p>
-<ul>
-<li><a href="cps09mar.dta">cps09mar.dta</a></li>
-</ul>
-<p><a href="hw3.html">HW 3</a>, due Thursday, Mar. 2, [[<a href="hw3_sol.pdf">solutions</a>]]</p>
-<p><a href="hw4.html">HW 4</a>, due Thursday, Mar. 23, [[<a href="hw4_sol.pdf">solutions</a>]]</p>
-<p><a href="hw5.html">HW 5</a>, due Tuesday, Apr. 18</p>
-</div>
-<div id="additional-material-for-midterm-1" class="section level1">
-<h1>Additional Material for Midterm 1</h1>
-<ul>
-<li><p>Midterm 1 covers the course lecture notes 1-4 / the first 4
-chapters of Hansen.</p></li>
-<li><p><a href="additional_practice1.html">Additional Practice Questions
-for Midterm 1</a>, these do not need to be turned in, [[<a href="additional_practice1_sol.pdf">solutions</a>]]</p></li>
-</ul>
-</div>
-<div id="additional-material-for-midterm-2" class="section level1">
-<h1>Additional Material for Midterm 2</h1>
-<ul>
-<li><p>Midterm 2 covers the course lecture notes from Lecture Notes 5
-(Asymptotic Theory for Least Squares), Resampling Methods, Nonlinear
-Models, and the first part of Alternative Approaches to Causal Inference
-(up to the section called “Alternative Approaches” on p.9)</p></li>
-<li><p><a href="additional_practice2.html">Additional Practice Questions
-for Midterm 2</a>, these questions do not need to be turned in, [[<a href="additional_practice2_sol.pdf">solutions</a>]]</p></li>
-</ul>
-</div>
-<div id="course-material" class="section level1">
-<h1>Course Material</h1>
-<p>We will cover the following topics:</p>
-<p>(<span style="color: red; font-weight: bold;">Note:</span> Some of
-the material will be updated/expanded as we move through the semester.
-Some of the topics at the end of the semester are tentative.)</p>
-<ol start="0" style="list-style-type: decimal">
-<li><p><a href="introduction_to_R.html">Introduction to R</a></p></li>
-<li><p><a href="01_linear_regression.html">Linear
-Regression</a></p></li>
-</ol>
-<!--2. [Inference/Hypothesis Testing](02_hypothesis_testing.html)-->
-<ol start="2" style="list-style-type: decimal">
-<li><p><a href="02_resampling_methods.html">Resampling
-Methods</a></p></li>
-<li><p><a href="03_nonlinear_models.html">Introduction to Nonlinear
-Models</a></p></li>
-<li><p><a href="04_alternative_causal_inference.html">Alternative
-Approaches to Causal Inference</a></p></li>
-<li><p><a href="05_panel_data_causal_inference.html">Panel Data
-Approaches to Causal Inference</a></p></li>
-<li><p>If we have time, an introduction to [Generalized Method of
-Moments]</p></li>
-<li><p>If we have time, an introduction to [Quantile
-Regression]</p></li>
-<li><p>If we have time, an introduction to [Nonparametric
-Regression]</p></li>
-</ol>
-</div>
-<div id="slides" class="section level1">
-<h1>Slides</h1>
-<ul>
-<li>First Week: <a href="introduction_slides.html">Introduction to ECON
-8080</a></li>
-</ul>
-</div>
+<p><strong>Additional Question 2:</strong> This question uses the same
+data/setup as for the job training problem from the previous question.
+We will be interested in computing an estimate of the <span class="math inline">\(ATT\)</span> of a job training program.
+<!--You can [download the data here](https://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/jtrain_observational.dta) and [download a description here](https://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/jtrain_observational_description.txt).-->
+For this problem, the outcome of interest is <code>re78</code>, the
+treatment is <code>train</code>, and suppose that unconfoundedness holds
+after conditioning on <code>age</code>, <code>educ</code>,
+<code>black</code>, <code>hisp</code>, <code>married</code>,
+<code>re75</code>, and <code>unem75</code>.</p>
+<p>For this problem, use the algorithm we discussed in class to estimate
+the <span class="math inline">\(ATT\)</span> using machine learning. In
+particular, I’d like for you to use the <code>randomForest</code>
+package to estimate the propensity score and the outcome regression
+model. How does this estimate compare to the one from the previous
+problem? [You do not need to report a standard error for the estimate,
+just the point estimate.]</p>
+<p><strong>Additional Question 3:</strong> Suppose you are interested in
+estimating the <span class="math inline">\(ATT\)</span>. You also have
+access to two periods of panel data where no units were treated in the
+first period and some units became treated in the second period.
+Further, suppose you are willing to assume that <span class="math inline">\(\textrm{E}[\Delta Y_t(0) | D=1] =
+\textrm{E}[\Delta Y_t(0) | D=0]\)</span>. Your friend suggests running
+the following regression <span class="math display">\[\begin{align*}
+  Y_{it} = \theta_t + \eta_i + \alpha D_{it} + e_{it}
+\end{align*}\]</span> and interpreting <span class="math inline">\(\alpha\)</span> as the <span class="math inline">\(ATT\)</span>. This friend also suggests that this
+approach is robust to treatment effect heterogeneity. Are they correct?
+Explain.</p>
 
 
 
