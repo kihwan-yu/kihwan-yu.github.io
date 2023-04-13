@@ -764,8 +764,22 @@ We show a number of weaknesses of this sort of TWFE regression (even in the case
 
 We show a number of weaknesses of this sort of TWFE regression (even in the case with only two time periods!):
 
+**Issue 3:** Not robust to parallel trends assumptions and conditional ATTs depending on time-invariant covariates
 
-**Issue 3:** Sensitive to (potentially strong) functional form assumptions that include
+* These do not show up in the TWFE regression at all
+
+* Could potentially side-step this issue by including time-invariant covariates with time-varying coefficients
+
+    * But would likely also need to include interactions with treatment as well to allow for heterogeneous effects (along the lines of Wooldridge (2021))
+
+---
+
+# Issues with TWFE Regressions
+
+We show a number of weaknesses of this sort of TWFE regression (even in the case with only two time periods!):
+
+
+**Issue 4:** Sensitive to (potentially strong) functional form assumptions that include
 
 * Violations of linearity of conditional expectations 
 
@@ -781,19 +795,6 @@ We show a number of weaknesses of this sort of TWFE regression (even in the case
 
 ---
 
-# Issues with TWFE Regressions
-
-We show a number of weaknesses of this sort of TWFE regression (even in the case with only two time periods!):
-
-**Issue 4:** Not robust to parallel trends assumptions and conditional ATTs depending on time-invariant covariates
-
-* These do not show up in the TWFE regression at all
-
-* Could potentially side-step this issue by including time-invariant covariates with time-varying coefficients
-
-    * But would likely also need to include interactions with treatment as well to allow for heterogeneous effects (along the lines of Wooldridge (2021))
-
----
 
 name: twfe-issues
 
