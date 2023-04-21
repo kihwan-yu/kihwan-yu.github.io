@@ -11,7 +11,7 @@
 
 
 
-<title>ECON 8080 Course Material</title>
+<title>Homework 6</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -354,83 +354,58 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">ECON 8080 Course Material</h1>
+<h1 class="title toc-ignore">Homework 6</h1>
 
 </div>
 
 
-<ul>
-<li><a href="syllabus.pdf">Syllabus</a></li>
-</ul>
-<div id="homeworks" class="section level1">
-<h1>Homeworks</h1>
-<p><a href="hw1.html">HW 1</a>, due Tuesday, Jan. 31, [[<a href="hw1_sol.pdf">solutions</a>]]</p>
-<p><a href="hw2.html">HW 2</a>, due Thursday, Feb. 9, [[<a href="hw2_sol.pdf">solutions</a>]]</p>
-<ul>
-<li><a href="cps09mar.dta">cps09mar.dta</a></li>
-</ul>
-<p><a href="hw3.html">HW 3</a>, due Thursday, Mar. 2, [[<a href="hw3_sol.pdf">solutions</a>]]</p>
-<p><a href="hw4.html">HW 4</a>, due Thursday, Mar. 23, [[<a href="hw4_sol.pdf">solutions</a>]]</p>
-<p><a href="hw5.html">HW 5</a>, due Tuesday, Apr. 18, [[<a href="hw5_sol.pdf">solutions</a>]]</p>
-<p><a href="hw6.html">HW 6</a>, due at 9am on Tuesday, May 2, please
-bring to my office, Amos B408</p>
-</div>
-<div id="additional-material-for-midterm-1" class="section level1">
-<h1>Additional Material for Midterm 1</h1>
-<ul>
-<li><p>Midterm 1 covers the course lecture notes 1-4 / the first 4
-chapters of Hansen.</p></li>
-<li><p><a href="additional_practice1.html">Additional Practice Questions
-for Midterm 1</a>, these do not need to be turned in, [[<a href="additional_practice1_sol.pdf">solutions</a>]]</p></li>
-</ul>
-</div>
-<div id="additional-material-for-midterm-2" class="section level1">
-<h1>Additional Material for Midterm 2</h1>
-<ul>
-<li><p>Midterm 2 covers the course lecture notes from Lecture Notes 5
-(Asymptotic Theory for Least Squares), Resampling Methods, Nonlinear
-Models, and the first part of Alternative Approaches to Causal Inference
-(up to the section called “Alternative Approaches” on p.9)</p></li>
-<li><p><a href="additional_practice2.html">Additional Practice Questions
-for Midterm 2</a>, these questions do not need to be turned in, [[<a href="additional_practice2_sol.pdf">solutions</a>]]</p></li>
-</ul>
-</div>
-<div id="course-material" class="section level1">
-<h1>Course Material</h1>
-<p>We will cover the following topics:</p>
-<p>(<span style="color: red; font-weight: bold;">Note:</span> Some of
-the material will be updated/expanded as we move through the semester.
-Some of the topics at the end of the semester are tentative.)</p>
-<ol start="0" style="list-style-type: decimal">
-<li><p><a href="introduction_to_R.html">Introduction to R</a></p></li>
-<li><p><a href="01_linear_regression.html">Linear
-Regression</a></p></li>
+<p><b style="color:red">I am going to add one or two additional
+questions on GMM, depending on the exact material that we cover next
+week.</b></p>
+<p><strong>Due:</strong> Please turn in at my office Amos B408 on May 2
+at 9am.</p>
+<p><strong>Textbook Questions:</strong> Hansen 17.2</p>
+<p><strong>Additional Question 1:</strong></p>
+<p>For this problem, use the data
+<code>job_displacement_clean2.RData</code> <a href="https://bcallaway11.github.io/Courses/ECON_8080_Spring_2023/job_displacement_clean2.RData">posted
+here</a>. For this problem, we are interested in estimating the (causal)
+effect of job displacement on earnings. The key variables in this data
+are <code>learn</code> (which is the log of earnings and is the outcome
+variable in this problem) and <code>first.displaced</code> (which
+contains the time period when an individual becomes displaced) —
+<code>first.displaced</code> is the variable that is used to form
+“groups” below. It is set equal to 0 for individuals that are not
+displaced from their job in any period. (As always, you are not allowed
+to use built-in <code>R</code> package, such as <code>plm</code>,
+<code>fixest</code> or <code>did</code>, to compute the results to these
+questions though you are welcome to compare your results to output from
+those packages.)</p>
+<p><strong>Hint:</strong> The number of observations is fairly large in
+this data and, therefore, inverting some matrices can be quite
+time-consuming. I recommend that you use the <code>Matrix</code> package
+to deal with the matrices in this question. This package has the ability
+to deal with “sparse” matrices in an efficient way which is helpful for
+this problem.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Use the within estimator to estimate the following regression
+model <span class="math display">\[\begin{align*}
+       Y_{it} = \theta_t + \eta_i + \alpha D_{it} + e_{it}
+   \end{align*}\]</span> Report an estimate of <span class="math inline">\(\alpha\)</span> and its standard error.</p></li>
+<li><p>Compute difference-in-differences versions of group-time average
+treatment effects (where you can define group by the time period when an
+individual becomes displaced from their job). Use individuals who are
+never displaced from their job as the comparison group.</p></li>
+<li><p>Aggregate the group-time average treatment effects in part (b)
+into an overall treatment effect parameter. Use the bootstrap to compute
+a standard error for it. How do these results compare to the ones from
+parts (a)?</p></li>
+<li><p>Compute the weights on underlying group-time average treatment
+effects that come from the two-way fixed effects regression in part (a).
+How do these compare to the the weights from part (c).</p></li>
+<li><p>Aggregate the group-time average treatment effects in part (b)
+into an event study. Use the bootstrap to compute standard errors, and
+plot the estimates along with a 95% confidence interval.</p></li>
 </ol>
-<!--2. [Inference/Hypothesis Testing](02_hypothesis_testing.html)-->
-<ol start="2" style="list-style-type: decimal">
-<li><p><a href="02_resampling_methods.html">Resampling
-Methods</a></p></li>
-<li><p><a href="03_nonlinear_models.html">Introduction to Nonlinear
-Models</a></p></li>
-<li><p><a href="04_alternative_causal_inference.html">Alternative
-Approaches to Causal Inference</a></p></li>
-<li><p><a href="05_panel_data_causal_inference.html">Panel Data
-Approaches to Causal Inference</a></p></li>
-<li><p>If we have time, an introduction to [Generalized Method of
-Moments]</p></li>
-<li><p>If we have time, an introduction to [Quantile
-Regression]</p></li>
-<li><p>If we have time, an introduction to [Nonparametric
-Regression]</p></li>
-</ol>
-</div>
-<div id="slides" class="section level1">
-<h1>Slides</h1>
-<ul>
-<li>First Week: <a href="introduction_slides.html">Introduction to ECON
-8080</a></li>
-</ul>
-</div>
 
 
 
