@@ -57,7 +57,7 @@ We will cover the following topics:
 
 5. [Panel Data Approaches to Causal Inference](05_panel_data_causal_inference.html)
 
-6. If we have time, an introduction to [Generalized Method of Moments]
+6. If we have time, an introduction to [Generalized Method of Moments](06_GMM.html)
 
 7. If we have time, an introduction to [Quantile Regression]
 

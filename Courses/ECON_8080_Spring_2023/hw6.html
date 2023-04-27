@@ -406,6 +406,66 @@ How do these compare to the the weights from part (c).</p></li>
 into an event study. Use the bootstrap to compute standard errors, and
 plot the estimates along with a 95% confidence interval.</p></li>
 </ol>
+<p><strong>Additional Question 2</strong></p>
+<p>Suppose you are interested in the structural model <span class="math inline">\(Y = X&#39;\beta + e\)</span>, but where <span class="math inline">\(\textrm{E}[Xe] \neq 0\)</span>. Suppose that you
+have access to an <span class="math inline">\(l \times 1\)</span> vector
+of instruments <span class="math inline">\(Z\)</span> (where <span class="math inline">\(l &gt; k\)</span> with <span class="math inline">\(k\)</span> being the dimension of <span class="math inline">\(X\)</span>) that satisfy <span class="math inline">\(\textrm{E}[Ze]=0\)</span>. Suppose that you
+estimate <span class="math inline">\(\beta\)</span> using GMM. That is,
+you calculate <span class="math display">\[\begin{align*}
+  \hat{\beta}_{gmm} &amp;= \underset{b}{\textrm{argmin}\ } \Big(
+\mathbf{Z}&#39;\mathbf{Y}-\mathbf{Z}&#39;\mathbf{X}b
+\Big)&#39;\widehat{\mathbf{W}}
+\Big(\mathbf{Z}&#39;\mathbf{Y}-\mathbf{Z}&#39;\mathbf{X}b\Big)
+\end{align*}\]</span> where <span class="math inline">\(\widehat{\mathbf{W}}\)</span> is an <span class="math inline">\(l \times l\)</span> weighting matrix that
+satisfies <span class="math inline">\(\widehat{\mathbf{W}}
+\xrightarrow{p} \mathbf{W}\)</span> which is a positive definite matrix
+(also, here <span class="math inline">\(\mathbf{Y}\)</span>, <span class="math inline">\(\mathbf{X}\)</span>, and <span class="math inline">\(\mathbf{Z}\)</span> are all data matrices). Derive
+an explicit expression for <span class="math inline">\(\hat{\beta}_{gmm}\)</span> and show that <span class="math inline">\(\sqrt{n}(\hat{\beta}_{gmm} - \beta)
+\xrightarrow{d} \mathcal{N}(0,\mathbf{V})\)</span>, and provide an
+expression for <span class="math inline">\(\mathbf{V}\)</span>.</p>
+<p><strong>Additional Question 3</strong> <span style="color:red;"><b>It
+is not required to turn this problem in, but I recommend giving it a
+try.</b></span></p>
+<p>For this problem, we will consider a smaller scale version of the
+problem in Additional Question 1. In particular, this question will
+focus on estimating group-time average treatment effects using GMM.</p>
+<p>To start with, after loading the same data as in Additional Question
+1, for this question, please run the following code:</p>
+<pre class="r"><code># limit time periods to 2001, 2003, 2005, 2007, and groups to 2003, 
+# 2005, 2007, and untreated
+data &lt;- subset(data, (year &lt;= 2007))
+data &lt;- subset(data, first.displaced %in% c(0, 2003, 2005, 2007))</code></pre>
+<p>To keep the notation simple, below 2001 will be <span class="math inline">\(t=1\)</span>, 2003 will be <span class="math inline">\(t=2\)</span>, 2005 will be <span class="math inline">\(t=3\)</span>, and 2007 will be <span class="math inline">\(t=4\)</span>. Also, for simplicity, you can treat
+<span class="math inline">\(p_g := \textrm{P}(G=g)\)</span> as being
+known. We will make the parallel trends assumption that, for all <span class="math inline">\(t=2,\ldots,4\)</span> and for all groups <span class="math inline">\(g\)</span>, <span class="math inline">\(\textrm{E}[\Delta Y_t(0) | G=g] =
+\textrm{E}[\Delta Y_t(0)]\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Please state all the non-redundant moment conditions that are
+implied by the parallel trends assumption. As a hint, I will give you
+two of them <span class="math display">\[\begin{align*}
+  \textrm{E}\left[\left(\frac{\mathbf{1}\{G=2\} }{p_2} -
+\frac{U}{p_U}\right) \Delta Y_2 \right] - ATT(2,2) &amp;= 0 \\
+  \textrm{E}\left[\left(\frac{\mathbf{1}\{G=3\} }{p_3} -
+\frac{U}{p_U}\right) \Delta Y_2 \right] &amp;= 0
+\end{align*}\]</span> where the first condition says that <span class="math inline">\(ATT(2,2)\)</span> is equal to the mean path of
+outcomes for group 2 relative to the untreated group, and the second
+condition says that the mean path of outcomes in period 2 should be the
+same for group 3 and the untreated group (because this is a
+pre-treatment period for group 3).</p></li>
+<li><p>Using the weighting matrix <span class="math inline">\(\mathbf{W}
+= \mathbf{I}_l\)</span> where <span class="math inline">\(l\)</span> is
+the number of moment conditions from part (a), compute estimates of
+<span class="math inline">\(ATT(g,t)\)</span> for all post-treatment
+periods for groups 2, 3, and 4. How do these estimates compare to the
+corresponding ones from Additional Question 1?</p></li>
+<li><p>Now, compute the efficient GMM estimator of all of the <span class="math inline">\(ATT(g,t)\)</span>’s mentioned in part (c). To
+estimate the efficient weighting matrix, you can use the preliminary
+estimates of the <span class="math inline">\(ATT(g,t)\)</span>’s from
+part (c). How do these estimates compare to the ones from part
+(b)?</p></li>
+<li><p>Compute a J-test for over-identification. How do you interpret
+the results?</p></li>
+</ol>
 
 
 
