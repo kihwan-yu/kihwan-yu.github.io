@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [HW 5](hw5.html), due Tuesday, Apr. 18, [[[solutions](hw5_sol.pdf)]]
 
-[HW 6](hw6.html), due at 9am on Tuesday, May 2, please bring to my office, Amos B408
+[HW 6](hw6.html), due at 9am on Tuesday, May 2, [[[solutions](hw6_sol.pdf)]]
 
 # Additional Material for Midterm 1
 
