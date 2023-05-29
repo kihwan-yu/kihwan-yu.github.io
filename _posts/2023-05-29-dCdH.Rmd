@@ -1,0 +1,101 @@
+---
+title: Proof of de Chaisemartin and d'Haultfoeuille (2020) under staggered treatment adoption
+output:
+  md_document:
+    variant: "gfm+tex_math_dollars"
+    preserve_yaml: TRUE
+author: "brant"
+date: '2023-05-29'
+layout: single
+permalink: /posts/dCdH
+categories:
+  - Econometrics
+  - Policy Evaluation
+  - Panel Data
+  - Proofs
+  - Notes to Self
+comments: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In my recent chapter in the *Handbook of Labor, Human Resources, and Population Economics*, I included proofs of results from Goodman-Bacon (*Journal of Econometrics*, 2021) and Sun and Abraham (*Journal of Econometrics*, 2021) basically with the idea of trying to write these results down in similar notation.  I didn't include the result from de Chaisemartin and d'Haultfoeuille (*American Economic Review*, 2020) just due to space limitations, but we are building on that result in a couple of recent papers, and I write this sort of proof just infrequently enough that I have to figure it out over and over.  I'm going to just include the proof for the oft-considered case with staggered treatment adoption, no anticipation, and no units treated in the first period.  I'm also using the same notation I always use -- if it's confusing, check out my [handbook chapter](https://bcallaway11.github.io/files/Callaway-Chapter-2022/main.pdf).  And, just to be clear, I'm not inventing anything here, just putting down a proof of a nice result in a familiar notation for me.
+
+The main assumption underlying all of this is the following **parallel trends assumption**:
+
+For all $g \in \mathcal{G}$, and $t=2,\ldots,\mathcal{T}$,
+\begin{align*}
+  \E[\Delta Y_t(0) | G=g] = \E[\Delta Y_t(0)]
+\end{align*}
+which says that the path of untreated potential outcomes is the same for all groups across all time periods.
+
+The interest here centers on interpreting $\alpha$ from the following regression
+\begin{align*}
+  Y_{it} = \theta_t + \eta_i + \alpha D_{it} + e_{it}
+\end{align*}
+Panel data versions of FWL-type arguments imply that we can remove the time- and unit- fixed effects by
+\begin{align*}
+  \ddot{Y}_{it} = \alpha \ddot{D}_{it} + \ddot{e}_{it}
+\end{align*}
+where the notation indicates double-demeaning each of the variables, so, for example,
+\begin{align*}
+  \ddot{D}_{it} = D_{it} - \bar{D}_i - \E[D_t] + \frac{1}{\mathcal{T}} \sum_{s=1}^{\mathcal{T}} \E[D_s]
+\end{align*}
+Now, population versions of FWL arguments imply that we can write
+\begin{align*}
+  \alpha = \frac{\displaystyle \frac{1}{\mathcal{T}} \sum_{t=1}^{\mathcal{T}} \E[\ddot{D}_{it} Y_{it}]}{\displaystyle \frac{1}{\mathcal{T}} \sum_{t=1}^{\mathcal{T}} \E[\ddot{D}_{it}^2]}
+\end{align*}
+There are two useful properties of double-demeaned random variables that are useful below
+\begin{align*}
+  \E[\ddot{D}_{it}] = 0 \qquad \textrm{and} \qquad \sum_{t=1}^T \ddot{D}_{it} = 0
+\end{align*}
+These are easy results to show (see, for example, my handbook chapter mentioned above for more details). 
+Next, notice that, under staggered treatment adoption, $\ddot{D}_{it}$ is fully determined by a unit's group and knowledge of $t$.  In particular, notice that,
+\begin{align*}
+  D_{it} = \indicator{G_i \leq t} \qquad \textrm{and} \qquad \bar{D}_i = \frac{1}{\mathcal{T}} \sum_{t=1}^{\mathcal{T}} \indicator{G_i \leq t} = \frac{\mathcal{T} - G_i + 1}{\mathcal{T}}
+\end{align*}
+Thus, define the function $v(g,t) = \indicator{g \leq t} - \frac{\mathcal{T} - g + 1}{\mathcal{T}}$; this implies that $D_{it} - \bar{D}_i = v(G_i,t)$.  Next, define the function $h(g,t) = v(g,t) - \displaystyle \sum_{g\in \mathcal{G}} v(g,t) p_g$, and notice that $\E[D_t] - \displaystyle \frac{1}{\mathcal{T}} \sum_{s=1}^{\mathcal{T}} \E[D_s] = \E\big[ D_{it} - \bar{D}_i\big] = \E[v(G,t)]$.  This implies that $\ddot{D}_{it} = h(G_i,t)$, which gives us an easy way to switch between working with $\ddot{D}_{it}$ and groups.
+
+To show the result, most of the work will be for the numerator in the expression for $\alpha$ above, and, in particular, notice that
+\begin{align*}
+  \frac{1}{\mathcal{T}} \sum_{t=1}^{\mathcal{T}} \E[\ddot{D}_{it} Y_{it} ] &= \frac{1}{\mathcal{T}} \sum_{t=1}^{\mathcal{T}} \E[\ddot{D}_{it} Y_{it} ] - \underbrace{\frac{1}{\mathcal{T}} \sum_{t=1}^{\mathcal{T}} \E[\ddot{D}_{it} Y_{iG_i-1} ]}_{=0} \\
+  &= \frac{1}{\mathcal{T}} \sum_{t=1}^{\mathcal{T}} \E[h(G_i,t) (Y_{it} - Y_{iG_i-1}) ] \\
+  &= \frac{1}{\mathcal{T}} \sum_{t=1}^{\mathcal{T}} \sum_{g \in \mathcal{G}} \E[h(g,t) (Y_{it} - Y_{ig-1}) | G=g] \, p_g \\
+  &= \frac{1}{\mathcal{T}} \sum_{t=1}^{\mathcal{T}} \sum_{g \in \mathcal{G}} h(g,t) \E[(Y_{it} - Y_{ig-1}) | G=g] \, p_g - \underbrace{\frac{1}{\mathcal{T}} \sum_{t=1}^{\mathcal{T}} \sum_{g \in \mathcal{G}} h(g,t)\E[ (Y_{it} - Y_{ig-1}) | G=\mathcal{T}+1] \, p_g}_{=0} \\
+  &= \frac{1}{\mathcal{T}} \sum_{t=1}^{\mathcal{T}} \sum_{g \in \mathcal{G}} h(g,t) \Big( \E[(Y_{it} - Y_{ig-1}) | G=g] - \E[(Y_{it} - Y_{ig-1}) | G=\mathcal{T}+1] \Big) \, p_g
+\end{align*}
+where the first equality holds by the property that $\displaystyle \sum_{t=1}^{\mathcal{T}} \ddot{D}_{it} = 0$, the second equality holds by the definition of $h$ and by combining terms, the third equality holds by the law of iterated expectations, we show that the extra term in the fourth equality is equal to 0 below, and the last equality holds by combining terms.  Combining this with the denominator in the FWL expression for $\alpha$, we have that
+\begin{align*}
+  \alpha = \sum_{t=1}^{\mathcal{T}} \sum_{g \in \mathcal{G}} \frac{h(g,t)}{\sum_{s=1}^{\mathcal{T}} \E[h(G,s)^2]} \Big( \E[(Y_{it} - Y_{ig-1}) | G=g] - \E[(Y_{it} - Y_{ig-1}) | G=\mathcal{T}+1] \Big) \, p_g
+\end{align*}
+
+Note that the previous result is a decomposition in the sense that everything is computable, and $\alpha$ will be exactly equal to the term on the right hand side ($\hat{\alpha}$ will be equal to the sample analogue of the term on the RHS).  
+
+It's also interesting to separate the previous expression based on whether a particular period is a post-treatment or a pre-treatment period.  In particular, just by splitting the sum above (and noticing that the inside term is equal 0 for the never-treated group), we have that
+\begin{align*}
+  \alpha &= \sum_{g \in \bar{\mathcal{G}}} \sum_{t=g}^{\mathcal{T}}  p_g \frac{h(g,t)}{\sum_{s=1}^{\mathcal{T}} \E[h(G,s)^2]} \Big( \E[(Y_{it} - Y_{ig-1}) | G=g] - \E[(Y_{it} - Y_{ig-1}) | G=\mathcal{T}+1] \Big) \\
+  & + \sum_{g \in \bar{\mathcal{G}}} \sum_{t=1}^{g-1}  p_g \frac{h(g,t)}{\sum_{s=1}^{\mathcal{T}} \E[h(G,s)^2]} \Big( \E[(Y_{it} - Y_{ig-1}) | G=g] - \E[(Y_{it} - Y_{ig-1}) | G=\mathcal{T}+1] \Big)
+\end{align*}
+
+Next, let's impose parallel trends.  In particular, under parallel trends $\E[(Y_{it} - Y_{ig-1}) | G=g] - \E[(Y_{it} - Y_{ig-1}) | G=\mathcal{T}+1] = ATT(g,t)$ for $t \geq g$ (i.e., post-treatment periods for group $g$), and $\E[(Y_{it} - Y_{ig-1}) | G=g] - \E[(Y_{it} - Y_{ig-1}) | G=\mathcal{T}+1] = 0$ for $t < g$ (i.e., pre-treatment periods for group $g$).  Then,
+\begin{align*}
+  \alpha = \sum_{g \in \bar{\mathcal{G}}} \sum_{t=g}^{\mathcal{T}} \underbrace{p_g \frac{h(g,t)}{\sum_{s=1}^{\mathcal{T}} \E[h(G,s)^2]}}_{w(g,t)} ATT(g,t)
+\end{align*}
+where $\bar{\mathcal{G}}$ denotes the set of all groups excluding $G=\mathcal{T}+1$ (the never-treated group).  This says that, under parallel trends, $\alpha$ is equal to a weighted average of group-time average treatment effects.  To conclude, let's show some interesting properties of the weights, $w(g,t)$.  Consider the numerator of the the weights,
+\begin{align*}
+  \sum_{g \in \bar{\mathcal{G}}} \sum_{t=g}^{\mathcal{T}} h(g,t) p_g &= \sum_{g \in \bar{\mathcal{G}}} \sum_{t=1}^{\mathcal{T}} h(g,t) \indicator{g \leq t} p_g \\
+  &= \sum_{t=1}^{\mathcal{T}} \sum_{g \in \mathcal{G}} h(g,t) \indicator{g \leq t} \indicator{g < \mathcal{T}+1}p_g \\
+  &= \sum_{t=1}^{\mathcal{T}} \E[h(G,t) \indicator{G \leq t}] \\
+  &= \sum_{t=1}^{\mathcal{T}} \E[\ddot{D}_{it} D_{it}] = \sum_{t=1}^{\mathcal{T}} \E[\ddot{D}_{it}^2]
+\end{align*}
+This implies that 
+\begin{align*}
+  \sum_{g \in \bar{\mathcal{G}}} \sum_{t=g}^{\mathcal{T}} w(g,t) = 1
+\end{align*}
+or, in other words, the weights sum to 1.  This is a good property for the weights to have.  It is possible to discuss the weights in more detail though.  I think it is fair to see the denominator in the weights as a normalizing constant.  The $p_g$ term indicates that, at least for this component of the weights, larger groups will tend to be given more weight.  The most interesting term in the weights is $h(g,t)$, and, for example, it is possible for $h(g,t)$ to be negative (which would make $w(g,t)$ negative as well).  Recall that
+\begin{align*}
+  h(g,t) = \indicator{g \leq t} - \frac{\mathcal{T} - g + 1}{\mathcal{T}} - \E[D_t] + \frac{1}{\mathcal{T}} \sum_{s=1}^{\mathcal{T}} \E[D_s]
+\end{align*}
+Also, notice that, for all the group-times that get non-zero weight, $\indicator{g \leq t} = 1$, and the last term is constant across $g$ and $t$.  This means that the most interesting terms are the two middle ones.  Group-times that get negative weights (or the smallest weights) would be ones where $\displaystyle \frac{T-g+1}{\mathcal{T}}$ is large (this would be the case for early treated groups) and when $\E[D_t]$ is large (this would be large for later treated periods).  This discussion suggests that, in a very simple case where $\mathcal{T}=3$ and $\mathcal{G} = \{2,3,4\}$, the $ATT(g,t)$ at risk of having negative weights is $ATT(g=2,t=3)$.
