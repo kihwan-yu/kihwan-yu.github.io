@@ -4,9 +4,6 @@ output:
   md_document:
     variant: "gfm+tex_math_dollars"
     preserve_yaml: TRUE
-include-before:
-- $$\newcommand{\E}{\mathbb{E}}$$
-- $$\newcommand{\indicator}[1]{ \mathbf{1}\{#1\} }$$
 author: "brant"
 date: '2023-05-29'
 layout: single
@@ -19,6 +16,10 @@ categories:
   - Notes to Self
 comments: true
 ---
+
+$$\newcommand{\E}{\mathbb{E}}$$
+$$\newcommand{\indicator}[1]{ \mathbf{1}\{#1\} }$$
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
