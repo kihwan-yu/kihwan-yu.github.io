@@ -24,7 +24,7 @@ At UGA, I teach courses on econometrics, both to graduate and undergraduate stud
 
 **Recent Updates:**
 
-* Slides and code for my presentation at NEXT-D are available [here](presentations/NEXT-D)
+* Slides and code for my presentation at NEXT-D are available [here](files/presentations/NEXT-D)
 
 * My DID chapter in the *Handbook of Labor, Human Resources and Population Economics*.  Here is a [short summary](/posts/did-chapter) of the chapter.
 
