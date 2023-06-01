@@ -2,7 +2,7 @@
 library(did) # devtools::install_github("bcallaway11/did")
 library(BMisc) # devtools::install_github("bcallaway11/BMisc")
 library(twfeweights) # devtools::install_github("bcallaway11/twfeweights")
-library(HonestDid) # devtools::install_github("asheshrambachan/HonestDID")
+library(HonestDiD) # devtools::install_github("asheshrambachan/HonestDID")
 library(fixest) # install.packages("fixest")
 library(modelsummary) # install.packages("model.summary")
 library(ggplot2) # install.packages("ggplot2")
