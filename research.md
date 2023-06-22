@@ -48,13 +48,25 @@ permalink: /research/
 
 ## Working Papers
 
-* [Difference in Differences with Time Varying Covariates](https://arxiv.org/abs/2202.02903) [[5 Minute Summary](posts/fms-did-time-varying-covariates)] (with Carolina Caetano, Stroud Payne, and Hugo Sant'Anna Rodrigues)
+* [Difference-in-Differences when Parallel Trends Holds Conditional on Covariates](https://arxiv.org/abs/2202.02903) (with Carolina Caetano)
 
 * [Nonlinear Approaches to Intergenerational Income Mobility allowing for Measurement Error](http://arxiv.org/abs/2107.09235) (with Tong Li and Irina Murtazashvili, submitted)
 
 * [Difference-in-Differences with a Continuous Treatment](https://arxiv.org/abs/2107.02637) [[5 Minute Summary](/posts/five-minute-did-continuous-treatment)] [[Slides](/files/DID-Continuous-Treatment/slides/did_reading_group.html)] (with Andrew Goodman-Bacon and Pedro H.C. Sant'Anna) 
 
+* Regulation, Emissions, and Productivity: Evidence from China's Eleventh Five-Year Plan (with Tong Li, Joel Rodrigue, Yuya Sasaki, and Yong Tan)
+
+## Work in Progress
+
+* Testing the Effects of an Unobservable Factor: Do Marriage Prospects Affect College Major Choice? (with Alper Arlsan and Tong Li)
+
+* Difference-in-Differences with Bad Controls (with Carolina Caetano, Stroud Payne, and Hugo Sant'Anna)
+
+
 ## Resting Papers
 
 * [Adoption and Diffusion of Health Information Technology: The Case of Primary Care Clinics](https://www.econstor.eu/bitstream/10419/64846/1/72645320X.pdf) (with Vivek Ghosal)
 
+* [Difference in Differences with Time Varying Covariates](https://arxiv.org/abs/2202.02903v1) [[5 Minute Summary](posts/fms-did-time-varying-covariates)] (with Carolina Caetano, Stroud Payne, and Hugo Sant'Anna Rodrigues)
+
+    * This paper is the ancestor of (and is replaced by) "Difference-in-Differences with Covariates in the Parallel Trends Assumption" and "Difference-in-Differences with Bad Controls"
