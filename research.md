@@ -58,6 +58,8 @@ permalink: /research/
 
 ## Work in Progress
 
+* **Inference on Counterfactual Transition Matrices** (with Chengye Jia and Karen Yan)
+
 * **Testing the Effects of an Unobservable Factor: Do Marriage Prospects Affect College Major Choice?** (with Alper Arlsan and Tong Li)
 
 * **Difference-in-Differences with Bad Controls** (with Carolina Caetano, Stroud Payne, and Hugo Sant'Anna)
