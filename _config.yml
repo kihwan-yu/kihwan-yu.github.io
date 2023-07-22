@@ -4,9 +4,9 @@
 
 remote_theme: mmistakes/minimal-mistakes
 minimal_mistakes_skin: "default"
-title: Brantly Callaway
+title: Kihwan Yu
 subtitle: ""
-author: "Brantly Callaway"
+author: "Kihwan Yu"
 defaults:
   # _posts
   - scope:
