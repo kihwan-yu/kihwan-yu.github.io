@@ -5,7 +5,7 @@ main:
     url: /cv/
   - title: "Research"
     url: /research/
-  - title: "Code Sharing"
+  - title: "Code"
     url: /code/
   - title: "Replication"
     url: /Replication/
