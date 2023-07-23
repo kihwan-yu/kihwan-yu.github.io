@@ -22,13 +22,13 @@ Economics*, 60(2): 1-21)
 
 ## Working Papers
 
-* [**Spatial Differentiation in Pricing Strategy of Restaurant Businesses: An Explorative Study with Web- Scrapped Data from a Delivery Application.**] (with Y. Kim, K. Yu, S. Kim, N. Widmar, and J. Jung)
+* **Spatial Differentiation in Pricing Strategy of Restaurant Businesses: An Explorative Study with Web- Scrapped Data from a Delivery Application.** (with Y. Kim, K. Yu, S. Kim, N. Widmar, and J. Jung)
 
 
 
 ## Work in Progress
 
-* **Inference on Counterfactual Transition Matrices** (with Chengye Jia and Karen Yan)
+* **not yet** (with Chengye Jia and Karen Yan)
 
 
 
