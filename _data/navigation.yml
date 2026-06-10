@@ -2,12 +2,10 @@ main:
   - title: "Home"
     url: /
   - title: "CV"
-    url: /cv/
+    url: /files/CV_Kihwan_Yu.pdf
   - title: "Research"
-    url: /research/
-  - title: "Code"
-    url: /code/
-  - title: "Replication"
-    url: /Replication/
-  - title: "Posts"
-    url: /posts/
+    url: /#research
+  - title: "Teaching"
+    url: /#teaching
+  - title: "Contact"
+    url: /#contact

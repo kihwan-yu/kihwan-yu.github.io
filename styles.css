@@ -1,0 +1,276 @@
+:root {
+  --ksu-purple: #512888;
+  --ksu-purple-dark: #2d154f;
+  --ksu-purple-soft: #f5f1fb;
+  --text: #222222;
+  --muted: #555b61;
+  --border: #e6e0ef;
+  --surface: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--surface);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+a {
+  color: var(--ksu-purple);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--ksu-purple-dark);
+  text-decoration: underline;
+}
+
+.site-header {
+  background: var(--ksu-purple);
+  border-bottom: 2px solid var(--ksu-purple-dark);
+}
+
+.navbar {
+  width: min(1120px, calc(100% - 32px));
+  min-height: 58px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.navbar-title {
+  color: #fff;
+  font-weight: 650;
+  font-size: 1.08rem;
+}
+
+.navbar-title:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 0.95rem;
+}
+
+.navbar-links a {
+  color: #fff;
+}
+
+.navbar-links a:hover {
+  color: rgba(255, 255, 255, 0.84);
+  text-decoration: none;
+}
+
+.site-main {
+  width: min(1040px, calc(100% - 32px));
+  margin: 42px auto 56px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 42px;
+  align-items: start;
+}
+
+.profile-card {
+  text-align: center;
+}
+
+.profile-photo {
+  width: 210px;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 18px;
+  border-radius: 4px;
+}
+
+.profile-card h1 {
+  margin: 0 0 6px;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.role,
+.affiliation {
+  margin: 0;
+  color: var(--muted);
+}
+
+.role {
+  font-weight: 600;
+}
+
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.82rem;
+  color: var(--ksu-purple);
+}
+
+.social-icons a:hover {
+  background: var(--ksu-purple);
+  border-color: var(--ksu-purple);
+  color: #fff;
+  text-decoration: none;
+}
+
+.bio-panel h2,
+.content-section h2 {
+  margin: 0 0 18px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid var(--ksu-purple);
+  color: var(--text);
+  font-size: 1.55rem;
+  font-weight: 500;
+}
+
+.bio-panel p {
+  margin: 0 0 15px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 32px;
+  margin-top: 22px;
+}
+
+.info-grid h3 {
+  margin: 0 0 8px;
+  color: var(--ksu-purple-dark);
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.info-grid ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.content-section {
+  margin-top: 44px;
+}
+
+.pub-item {
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pub-item:last-child {
+  border-bottom: 0;
+}
+
+.pub-item h3 {
+  margin: 0 0 5px;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 650;
+}
+
+.authors,
+.journal {
+  margin: 2px 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.abstract summary {
+  cursor: pointer;
+  margin-top: 8px;
+  color: var(--ksu-purple);
+  font-size: 0.9rem;
+}
+
+.abstract p {
+  margin: 9px 0 0;
+  padding: 14px 16px;
+  background: var(--ksu-purple-soft);
+  border-left: 3px solid var(--ksu-purple);
+  color: #3f4146;
+  font-size: 0.94rem;
+}
+
+.contact-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.contact-list li {
+  margin-bottom: 7px;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.88rem;
+  text-align: center;
+  padding: 22px 16px;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .navbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  .navbar-links {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .site-main {
+    margin-top: 30px;
+  }
+
+  .profile-grid,
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-grid {
+    gap: 30px;
+  }
+
+  .profile-photo {
+    width: 190px;
+    height: 190px;
+  }
+}
