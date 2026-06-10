@@ -20,8 +20,8 @@ body {
   margin: 0;
   color: var(--text);
   background: var(--surface);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
+  font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17.6px;
   line-height: 1.55;
 }
 
@@ -41,7 +41,7 @@ a:hover {
 }
 
 .navbar {
-  width: min(1120px, calc(100% - 32px));
+  width: min(1230px, calc(100% - 32px));
   min-height: 58px;
   margin: 0 auto;
   display: flex;
@@ -78,14 +78,14 @@ a:hover {
 }
 
 .site-main {
-  width: min(1040px, calc(100% - 32px));
+  width: min(1145px, calc(100% - 32px));
   margin: 42px auto 56px;
 }
 
 .profile-grid {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 42px;
+  grid-template-columns: 300px 1fr;
+  gap: 46px;
   align-items: start;
 }
 
@@ -197,6 +197,10 @@ a:hover {
   font-size: 1rem;
   line-height: 1.4;
   font-weight: 650;
+}
+
+#teaching .pub-item h3 {
+  font-weight: 400;
 }
 
 .authors,
