@@ -192,15 +192,40 @@ a:hover {
   border-bottom: 0;
 }
 
+.teaching-item {
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.teaching-item:last-child {
+  border-bottom: 0;
+}
+
 .pub-item h3 {
   margin: 0 0 5px;
   font-size: 1rem;
   line-height: 1.4;
-  font-weight: 650;
+  font-weight: 400;
 }
 
-#teaching .pub-item h3 {
-  font-weight: 400;
+.teaching-role {
+  margin: 0 0 4px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.teaching-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 0 2px;
+  color: var(--text);
+}
+
+.teaching-line span:last-child {
+  flex: 0 0 auto;
+  color: var(--muted);
 }
 
 .authors,
@@ -267,6 +292,10 @@ a:hover {
   .profile-grid,
   .info-grid {
     grid-template-columns: 1fr;
+  }
+
+  .teaching-line {
+    display: block;
   }
 
   .profile-grid {
