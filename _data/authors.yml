@@ -1,11 +1,14 @@
 Kihwan Yu:
   name        : "Kihwan Yu"
-  bio         : "Ph.D. student, Kansas State University"
+  bio         : "Ph.D. candidate in Agricultural Economics, Kansas State University"
   avatar      : "/assets/images/temp.jpg"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:kihwanyu@ksu.edu"
+    - label: "Office"
+      icon: "fas fa-fw fa-map-marker-alt"
+      url: "https://www.k-state.edu/maps/buildings/WatersHall.html"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://kihwan-yu.github.io/"

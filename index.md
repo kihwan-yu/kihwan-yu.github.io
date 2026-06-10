@@ -11,9 +11,11 @@ author_profile: true
   </tr>
 </table>
 
-I am an Ph.D. student in the Agriculture Economics Department at Kansas state university.
+I am a Ph.D. candidate in the Department of Agricultural Economics at Kansas State University.
 
-My primary research interest lies in scrutinizing the unintended and unexplored consequences of agricultural policy. Since I pursue to conduct original and inventive research, I relish utilizing data collection methods such as web-scraping and cutting-edge quasi-experimental approaches, as well as making a considerable effort to relate them with traditional economic theories.
+My research interests are in agricultural and environmental policy, agricultural production, risk management, and agricultural economics. My current work studies how policy design and natural-resource access shape producer decisions, agricultural markets, and regional economic outcomes.
+
+My job market paper is **"Reference Prices, Bidding, and Enrollment in the Conservation Reserve Program."** I also study agricultural coagglomeration around the High Plains Aquifer and risk aggregation in crop insurance demand.
 
 **<a href="files/CV_Kihwan_Yu.pdf">Curriculum Vitae</a>**
 
@@ -21,7 +23,8 @@ My primary research interest lies in scrutinizing the unintended and unexplored 
 
 **Recent Updates:**
 
-* 07-23-2023. I just started to make this homepage!
+* 06-10-2026. Updated website with current CV, research, and teaching information.
+* 2024. Published "Spatial differentiation in food service pricing: an explorative study with web-scraped data" in the *International Food and Agribusiness Management Review*.
 
 
 
@@ -29,5 +32,7 @@ My primary research interest lies in scrutinizing the unintended and unexplored 
 
 **Contact Information:**
 
-Email: Kihwanyu@ksu.edu
+Office: Waters 331H, 1603 Old Claflin Rd, Manhattan, KS 66502
+
+Email: kihwanyu@ksu.edu
 
