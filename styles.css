@@ -1,10 +1,10 @@
 :root {
-  --ksu-purple: #512888;
-  --ksu-purple-dark: #2d154f;
-  --ksu-purple-soft: #f5f1fb;
-  --text: #222222;
-  --muted: #555b61;
-  --border: #e6e0ef;
+  --ksu-purple: #3f3f46;
+  --ksu-purple-dark: #27272a;
+  --ksu-purple-soft: #f4f4f5;
+  --text: #1f2933;
+  --muted: #5f6670;
+  --border: #e4e7eb;
   --surface: #ffffff;
 }
 
