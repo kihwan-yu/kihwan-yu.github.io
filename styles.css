@@ -95,8 +95,9 @@ a:hover {
 
 .profile-photo {
   width: 252px;
-  height: 252px;
+  height: 330px;
   object-fit: cover;
+  object-position: center top;
   display: block;
   margin: 0 auto 18px;
   border-radius: 4px;
@@ -210,27 +211,25 @@ a:hover {
 }
 
 .teaching-role {
-  margin: 2px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 0 5px;
   color: var(--muted);
   font-size: 0.94rem;
   font-weight: 400;
 }
 
+.teaching-role span:last-child {
+  flex: 0 0 auto;
+}
+
 .teaching-line {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
   margin: 0 0 5px;
   color: var(--text);
   font-size: 1.1rem;
   line-height: 1.4;
   font-weight: 400;
-}
-
-.teaching-line span:last-child {
-  flex: 0 0 auto;
-  color: var(--muted);
-  font-size: 0.94rem;
 }
 
 .authors,
@@ -299,7 +298,7 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-  .teaching-line {
+  .teaching-role {
     display: block;
   }
 
@@ -309,6 +308,6 @@ a:hover {
 
   .profile-photo {
     width: 228px;
-    height: 228px;
+    height: 300px;
   }
 }
