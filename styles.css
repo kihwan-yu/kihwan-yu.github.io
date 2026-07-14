@@ -215,20 +215,24 @@ a:hover {
   justify-content: space-between;
   gap: 24px;
   margin: 0 0 5px;
-  color: var(--muted);
-  font-size: 0.94rem;
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1.4;
   font-weight: 400;
 }
 
 .teaching-role span:last-child {
   flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.55;
 }
 
 .teaching-line {
   margin: 0 0 5px;
-  color: var(--text);
-  font-size: 1.1rem;
-  line-height: 1.4;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.55;
   font-weight: 400;
 }
 
