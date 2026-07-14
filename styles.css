@@ -243,6 +243,29 @@ a:hover {
   font-size: 0.94rem;
 }
 
+.pub-links {
+  margin: 8px 0 0;
+}
+
+.paper-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--ksu-purple);
+  font-size: 0.88rem;
+  line-height: 1.2;
+}
+
+.paper-button:hover {
+  background: var(--ksu-purple);
+  border-color: var(--ksu-purple);
+  color: #fff;
+  text-decoration: none;
+}
+
 .abstract summary {
   cursor: pointer;
   margin-top: 8px;
