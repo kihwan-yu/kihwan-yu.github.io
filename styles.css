@@ -131,6 +131,7 @@ a:hover {
 .social-icons a {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   min-height: 30px;
   padding: 4px 8px;
   border: 1px solid var(--border);
@@ -144,6 +145,31 @@ a:hover {
   border-color: var(--ksu-purple);
   color: #fff;
   text-decoration: none;
+}
+
+.profile-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  background-color: currentColor;
+  -webkit-mask: var(--profile-icon) center / contain no-repeat;
+  mask: var(--profile-icon) center / contain no-repeat;
+}
+
+.icon-mail {
+  --profile-icon: url("/assets/icons/lucide/mail.svg");
+}
+
+.icon-cv {
+  --profile-icon: url("/assets/icons/lucide/file-text.svg");
+}
+
+.icon-github {
+  --profile-icon: url("/assets/icons/lucide/github.svg");
+}
+
+.icon-scholar {
+  --profile-icon: url("/assets/icons/lucide/graduation-cap.svg");
 }
 
 .bio-panel h2,
